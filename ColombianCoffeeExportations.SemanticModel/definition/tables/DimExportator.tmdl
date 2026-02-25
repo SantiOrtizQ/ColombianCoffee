@@ -1,0 +1,44 @@
+table DimExportator
+	lineageTag: 0f19c363-0e77-42f4-b4d5-380ac8428514
+
+	column Exp_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0328ee08-279d-49a6-a6e4-a437a7b11381
+		summarizeBy: none
+		sourceColumn: Exp_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exportator
+		dataType: string
+		lineageTag: be90ccd6-e180-4828-9f45-9e7a9199d990
+		summarizeBy: none
+		sourceColumn: Exportator
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimExportator = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+				    Exp_Dest_Sheet = Source{[Item="Exp_Dest",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Exp_Dest_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País destino", type text}, {"Nombre exportador", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor Factura (USD)*", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+				    #"Nombre exportador1" = #"Removed Columns"[Nombre exportador],
+				    #"Converted to Table" = Table.FromList(#"Nombre exportador1", Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Removed Duplicates" = Table.Distinct(#"Converted to Table"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Duplicates",{{"Column1", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Column1", "Exportator"}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Renamed Columns", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Index",{{"Index", "Exp_id"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Exp_id", "Exportator"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

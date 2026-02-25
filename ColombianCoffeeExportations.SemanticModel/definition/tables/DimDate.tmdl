@@ -1,0 +1,97 @@
+table DimDate
+	lineageTag: b18c017d-dffb-431f-96bc-e1788a2ad083
+
+	column Date_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d84cdd9-76e7-4e5e-83da-0edd4ec14b6b
+		summarizeBy: none
+		sourceColumn: Date_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Full_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fab73053-b3e9-4df1-a10c-85d68cb8c249
+		summarizeBy: none
+		sourceColumn: Full_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d4e29f8-f87c-47f5-9962-67cf6192b9f3
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 92560c30-be23-452d-b465-42e0c0600343
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: a2562104-0a9b-462d-801f-534dc0fc9675
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: a77be1f0-4c31-4330-8527-6e4a91061584
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: e3b9b0f1-054f-41b8-9ec8-e036519169f0
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+				    Dest_Vol_Type_Sheet = Source{[Item="Dest_Vol_Type",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Dest_Vol_Type_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País de destino", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Año", "Mes"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Removed Duplicates", {"Mes"}),
+				    #"Added Custom" = Table.AddColumn(#"Removed Errors", "Month Name", each Date.MonthName(#date(2024, [Mes], 1))),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Month Name", type text}}),
+				    #"Inserted First Characters" = Table.AddColumn(#"Changed Type1", "First Characters", each Text.Start([Month Name], 3), type text),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Inserted First Characters", "Date_id", each Text.Combine({Text.From([Año], "en-GB"), Text.From([Mes], "en-GB")}, ""), type text),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Inserted Merged Column",{"Date_id", "Año", "Mes", "Month Name", "First Characters"}),
+				    #"Added Custom1" = Table.AddColumn(#"Reordered Columns", "Day", each 1),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom1",{{"Day", Int64.Type}}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Changed Type2",{"Date_id", "Año", "Mes", "Day", "Month Name", "First Characters"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Reordered Columns1",{{"Año", "Year"}, {"Mes", "Month Number"}, {"First Characters", "Month"}}),
+				    #"Inserted Merged Column1" = Table.AddColumn(#"Renamed Columns", "Full_date", each Text.Combine({Text.From([Year], "en-GB"), Text.From([Month Number], "en-GB"), Text.From([Day], "en-GB")}, "/"), type text),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Inserted Merged Column1",{{"Full_date", type date}}),
+				    #"Reordered Columns2" = Table.ReorderColumns(#"Changed Type3",{"Date_id", "Full_date", "Year", "Month Number", "Day", "Month Name", "Month"}),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Reordered Columns2",{{"Date_id", Int64.Type}})
+				in
+				    #"Changed Type4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

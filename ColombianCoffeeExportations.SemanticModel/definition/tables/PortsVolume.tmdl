@@ -1,0 +1,73 @@
+table PortsVolume
+	lineageTag: e84c0d47-bded-4afb-8a99-9db9e18ad500
+
+	column Date_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ac1c1800-2d89-4229-b789-961893e4cbcb
+		summarizeBy: none
+		sourceColumn: Date_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Port_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5667921d-05bd-446d-86ab-336dcb2c7254
+		summarizeBy: none
+		sourceColumn: Port_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ae5f6b1b-2b8a-4ff9-b192-13601fe9df39
+		summarizeBy: none
+		sourceColumn: Type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sacos de 60 Kg. Exportados'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f077d45-0392-4040-85af-51fd2be4d11d
+		summarizeBy: sum
+		sourceColumn: Sacos de 60 Kg. Exportados
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valor provisional de la Exportación (USD) *'
+		dataType: double
+		lineageTag: b029f741-9f09-4a06-9bce-64293ebc226b
+		summarizeBy: sum
+		sourceColumn: Valor provisional de la Exportación (USD) *
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PortsVolume = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+				    Port_Type_Vol_Sheet = Source{[Item="Port_Type_Vol",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Port_Type_Vol_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"Puerto de embarque", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"Año", "Mes"}, DimDate, {"Year", "Month Number"}, "DimDate", JoinKind.LeftOuter),
+				    #"Merged Queries1" = Table.NestedJoin(#"Merged Queries", {"Puerto de embarque"}, DimPorts, {"Port"}, "DimPorts", JoinKind.LeftOuter),
+				    #"Merged Queries2" = Table.NestedJoin(#"Merged Queries1", {"Tipo de café"}, DimTypes, {"Coffee Type"}, "DimTypes", JoinKind.LeftOuter),
+				    #"Expanded DimDate" = Table.ExpandTableColumn(#"Merged Queries2", "DimDate", {"Date_id"}, {"Date_id"}),
+				    #"Expanded DimPorts" = Table.ExpandTableColumn(#"Expanded DimDate", "DimPorts", {"Port_id"}, {"Port_id"}),
+				    #"Expanded DimTypes" = Table.ExpandTableColumn(#"Expanded DimPorts", "DimTypes", {"Type_id"}, {"Type_id"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Expanded DimTypes",{"Año", "Mes", "Puerto de embarque", "Tipo de café"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Removed Columns1",{"Date_id", "Port_id", "Type_id", "Sacos de 60 Kg. Exportados", "Valor provisional de la Exportación (USD) *"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

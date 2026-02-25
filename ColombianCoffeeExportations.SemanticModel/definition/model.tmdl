@@ -10,5 +10,17 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
+annotation PBI_QueryOrder = ["Tipo de café","source-Dest_Vol_Type","source-Exp_Dest","source-Port_Type_Vol","source-Pais de destino","_Measures","DimDate","DimPorts","DimTypes","DimCountry","DimExportator","DestinationsVolume","ExportatorsDest","PortsVolume"]
+
+ref table _Measures
+ref table DimDate
+ref table DimPorts
+ref table DimTypes
+ref table DimCountry
+ref table DimExportator
+ref table DestinationsVolume
+ref table ExportatorsDest
+ref table PortsVolume
+
 ref cultureInfo en-US
 

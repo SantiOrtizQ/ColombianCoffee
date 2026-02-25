@@ -1,0 +1,24 @@
+table _Measures
+	lineageTag: 84ecbe50-aacc-4993-aadb-39a684e25dec
+
+	column -
+		dataType: string
+		lineageTag: 75dcb3ea-4bc3-40ce-851b-3cf04139443f
+		summarizeBy: none
+		sourceColumn: -
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"-" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"-", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

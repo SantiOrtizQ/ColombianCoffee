@@ -1,0 +1,43 @@
+table DimPorts
+	lineageTag: 19659f0b-e874-4a10-ada8-cdf901637f2d
+
+	column Port_id
+		dataType: int64
+		formatString: 0
+		lineageTag: ef67f38c-e08c-48d6-9c80-c43bfc816a1a
+		summarizeBy: none
+		sourceColumn: Port_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Port
+		dataType: string
+		lineageTag: 980068d4-5fa3-4014-bd87-70260d3decb6
+		summarizeBy: none
+		sourceColumn: Port
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPorts = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+				    Port_Type_Vol_Sheet = Source{[Item="Port_Type_Vol",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Port_Type_Vol_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"Puerto de embarque", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+				    #"Puerto de embarque1" = #"Removed Columns"[Puerto de embarque],
+				    #"Converted to Table" = Table.FromList(#"Puerto de embarque1", Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Removed Duplicates" = Table.Distinct(#"Converted to Table"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates",{{"Column1", "Port"}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Renamed Columns", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Index",{{"Index", "Port_id"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Port_id", "Port"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

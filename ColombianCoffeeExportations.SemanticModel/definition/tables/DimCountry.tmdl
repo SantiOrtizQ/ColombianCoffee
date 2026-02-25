@@ -1,0 +1,46 @@
+table DimCountry
+	lineageTag: f369fb79-bfa1-4192-873a-3b0fd84c8da3
+
+	column Country_id
+		dataType: int64
+		formatString: 0
+		lineageTag: fa4e01b5-bff9-4bbb-93a1-bc9b652b0445
+		summarizeBy: none
+		sourceColumn: Country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 1954cf5c-9983-469e-afb4-f6a63f52a3cc
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCountry = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+				    Exp_Dest_Sheet = Source{[Item="Exp_Dest",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Exp_Dest_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País destino", type text}, {"Nombre exportador", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor Factura (USD)*", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+				    #"País destino1" = #"Removed Columns"[País destino],
+				    #"Removed Duplicates" = List.Distinct(#"País destino1"),
+				    #"Converted to Table" = Table.FromList(#"Removed Duplicates", Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Converted to Table",{{"Column1", type text}}),
+				    #"Appended Query" = Table.Combine({#"Changed Type1", #"source-Pais de destino"}),
+				    #"Removed Duplicates1" = Table.Distinct(#"Appended Query"),
+				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates1",{{"Column1", Order.Ascending}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "Country_id"}, {"Column1", "Country"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Country_id", "Country"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,77 @@
+table DestinationsVolume
+	lineageTag: 05c26c87-20fd-4f40-a4c2-1e351c8cd882
+
+	column Date_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e46557d6-a2e5-4c77-a117-b1e6793aa646
+		summarizeBy: none
+		sourceColumn: Date_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 59e20a77-63a8-400e-9fbf-753668a03d08
+		summarizeBy: none
+		sourceColumn: Country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 261bc228-b243-4922-bb5a-a90ca44e58c8
+		summarizeBy: none
+		sourceColumn: Type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sacos (60 kg)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0630d26c-a785-488d-ae45-ffa739b3317c
+		summarizeBy: sum
+		sourceColumn: Sacos (60 kg)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valor (USD)'
+		dataType: double
+		lineageTag: 41df7b9f-1911-4c01-a35b-71e1606e51b1
+		summarizeBy: sum
+		sourceColumn: Valor (USD)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DestinationsVolume = m
+		mode: import
+		source =
+				let
+				    Source = #"source-Dest_Vol_Type",
+				    #"Merged Queries" = Table.NestedJoin(Source, {"Año", "Mes"}, DimDate, {"Year", "Month Number"}, "DimDate", JoinKind.LeftOuter),
+				    #"Expanded DimDate" = Table.ExpandTableColumn(#"Merged Queries", "DimDate", {"Date_id"}, {"DimDate.Date_id"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded DimDate",{"DimDate.Date_id", "Año", "Mes", "País de destino", "Tipo de café", "Sacos de 60 Kg. Exportados", "Valor provisional de la Exportación (USD) *"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"Año", "Mes"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Valor provisional de la Exportación (USD) *", "Valor (USD)"}, {"Sacos de 60 Kg. Exportados", "Sacos (60 kg)"}, {"Tipo de café", "Tipo"}, {"País de destino", "Pais"}, {"DimDate.Date_id", "Date_id"}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"Pais"}, DimCountry, {"Country"}, "DimCountry", JoinKind.LeftOuter),
+				    #"Expanded DimCountry" = Table.ExpandTableColumn(#"Merged Queries1", "DimCountry", {"Country_id"}, {"DimCountry.Country_id"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Expanded DimCountry",{{"DimCountry.Country_id", "Country_id"}}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Renamed Columns1",{"Date_id", "Country_id", "Pais", "Tipo", "Sacos (60 kg)", "Valor (USD)"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns1",{"Pais"}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Removed Columns1", {"Tipo"}, DimTypes, {"Coffee Type"}, "DimTypes", JoinKind.LeftOuter),
+				    #"Expanded DimTypes" = Table.ExpandTableColumn(#"Merged Queries2", "DimTypes", {"Type_id"}, {"DimTypes.Type_id"}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Expanded DimTypes",{{"DimTypes.Type_id", "Type_id"}}),
+				    #"Reordered Columns2" = Table.ReorderColumns(#"Renamed Columns2",{"Date_id", "Country_id", "Type_id", "Tipo", "Sacos (60 kg)", "Valor (USD)"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Reordered Columns2",{"Tipo"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns2",{{"Date_id", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

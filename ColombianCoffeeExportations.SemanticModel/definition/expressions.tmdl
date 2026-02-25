@@ -1,0 +1,81 @@
+expression 'Tipo de café' =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+		    Port_Type_Vol_Sheet = Source{[Item="Port_Type_Vol",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Port_Type_Vol_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"Puerto de embarque", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+		    #"Tipo de café1" = #"Removed Columns"[Tipo de café],
+		    #"Converted to Table" = Table.FromList(#"Tipo de café1", Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+		in
+		    #"Converted to Table"
+	lineageTag: 6aa6aede-3955-44a0-a434-cbfe617f3695
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression source-Dest_Vol_Type =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+		    Dest_Vol_Type_Sheet = Source{[Item="Dest_Vol_Type",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Dest_Vol_Type_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País de destino", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"})
+		in
+		    #"Removed Columns"
+	lineageTag: 6876774d-baf8-48c4-8be2-ee53c48df163
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression source-Exp_Dest =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+		    Exp_Dest_Sheet = Source{[Item="Exp_Dest",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Exp_Dest_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País destino", type text}, {"Nombre exportador", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor Factura (USD)*", type number}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"})
+		in
+		    #"Removed Columns"
+	lineageTag: ad6ed465-4435-431c-9a57-464549052a2d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression source-Port_Type_Vol =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+		    Port_Type_Vol_Sheet = Source{[Item="Port_Type_Vol",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Port_Type_Vol_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"Puerto de embarque", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"})
+		in
+		    #"Removed Columns"
+	lineageTag: 16375432-b590-4242-b07f-67a0ebb58a41
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'source-Pais de destino' =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+		    Dest_Vol_Type_Sheet = Source{[Item="Dest_Vol_Type",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Dest_Vol_Type_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País de destino", type text}, {"Tipo de café", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor provisional de la Exportación (USD) *", type number}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+		    #"País de destino1" = #"Removed Columns"[País de destino],
+		    #"Converted to Table" = Table.FromList(#"País de destino1", Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+		    #"Removed Duplicates" = Table.Distinct(#"Converted to Table"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Duplicates",{{"Column1", type text}})
+		in
+		    #"Changed Type1"
+	lineageTag: 6778316d-4dd3-49bc-a5ab-21d1646e7cba
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

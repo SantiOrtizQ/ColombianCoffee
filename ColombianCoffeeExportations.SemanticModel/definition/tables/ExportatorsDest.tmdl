@@ -1,0 +1,78 @@
+table ExportatorsDest
+	lineageTag: b919394e-4a78-48da-b740-bfe617608ade
+
+	column Date_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 385f0103-1df3-4173-b099-a33b5b157c14
+		summarizeBy: none
+		sourceColumn: Date_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 709719fe-00d7-4698-95ec-e239b65a1a7a
+		summarizeBy: none
+		sourceColumn: Country_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exp_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5014dc61-0cfc-4bba-b078-ce0b3d06b49c
+		summarizeBy: none
+		sourceColumn: Exp_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sacos de 60 Kg. Exportados'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a028fec-3768-4890-8c7d-93ad77f00b64
+		summarizeBy: sum
+		sourceColumn: Sacos de 60 Kg. Exportados
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valor Factura (USD)*'
+		dataType: double
+		lineageTag: ff34c243-0331-41fd-8ecd-583ec8c0ac78
+		summarizeBy: sum
+		sourceColumn: Valor Factura (USD)*
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ExportatorsDest = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ExportacionesSource.xlsx"), null, true),
+				    Exp_Dest_Sheet = Source{[Item="Exp_Dest",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Exp_Dest_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Año", Int64.Type}, {"Mes", Int64.Type}, {"País destino", type text}, {"Nombre exportador", type text}, {"Sacos de 70 kg. equivalente real Exportados", Int64.Type}, {"Sacos de 60 Kg. Exportados", Int64.Type}, {"Valor Factura (USD)*", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Sacos de 70 kg. equivalente real Exportados"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"Año", "Mes"}, DimDate, {"Year", "Month Number"}, "DimDate", JoinKind.LeftOuter),
+				    #"Expanded DimDate" = Table.ExpandTableColumn(#"Merged Queries", "DimDate", {"Date_id"}, {"Date_id"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded DimDate",{"Date_id", "Año", "Mes", "País destino", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns",{"Año", "Mes"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Removed Columns1", {"País destino"}, DimCountry, {"Country"}, "DimCountry", JoinKind.LeftOuter),
+				    #"Expanded DimCountry" = Table.ExpandTableColumn(#"Merged Queries1", "DimCountry", {"Country_id"}, {"Country_id"}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Expanded DimCountry",{"País destino"}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Removed Columns2",{"Date_id", "Country_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Reordered Columns1",{{"Date_id", Int64.Type}}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Changed Type1", {"Nombre exportador"}, DimExportator, {"Exportator"}, "DimExportator", JoinKind.LeftOuter),
+				    #"Expanded DimExportator" = Table.ExpandTableColumn(#"Merged Queries2", "DimExportator", {"Exp_id"}, {"Exp_id"}),
+				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded DimExportator",{"Date_id", "Country_id", "Exp_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
+				    #"Removed Columns3" = Table.RemoveColumns(#"Reordered Columns2",{"Nombre exportador"})
+				in
+				    #"Removed Columns3"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

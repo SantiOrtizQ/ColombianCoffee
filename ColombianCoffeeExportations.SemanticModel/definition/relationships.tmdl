@@ -1,0 +1,36 @@
+relationship AutoDetected_41ffbd50-7263-4543-92fb-c7f4cf9c20f9
+	fromColumn: DestinationsVolume.Date_id
+	toColumn: DimDate.Date_id
+
+relationship AutoDetected_a2f4f1f0-7952-49eb-86ad-49ebd0fd2401
+	fromColumn: ExportatorsDest.Date_id
+	toColumn: DimDate.Date_id
+
+relationship AutoDetected_52f9d5b3-6a89-4086-864e-c29b4e66fb04
+	fromColumn: PortsVolume.Date_id
+	toColumn: DimDate.Date_id
+
+relationship AutoDetected_07853ce3-b910-4583-9a53-8251be92543b
+	fromColumn: PortsVolume.Port_id
+	toColumn: DimPorts.Port_id
+
+relationship AutoDetected_87f99634-8ad3-496e-a622-4d5b87ba2431
+	fromColumn: DestinationsVolume.Type_id
+	toColumn: DimTypes.Type_id
+
+relationship AutoDetected_2cbcd6bc-69b0-4efd-aee4-956e735b9261
+	fromColumn: PortsVolume.Type_id
+	toColumn: DimTypes.Type_id
+
+relationship AutoDetected_c567d39f-e3f9-41af-8829-bbbc45f668c1
+	fromColumn: DestinationsVolume.Country_id
+	toColumn: DimCountry.Country_id
+
+relationship AutoDetected_a9787d1b-7cbe-43d5-b615-b25d060062e0
+	fromColumn: ExportatorsDest.Country_id
+	toColumn: DimCountry.Country_id
+
+relationship AutoDetected_8d92e733-e84c-47fd-8b54-749b5b006ed6
+	fromColumn: ExportatorsDest.Exp_id
+	toColumn: DimExportator.Exp_id
+
