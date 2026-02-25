@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ColombianCoffeeExportations"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "44c0beac-b60e-416e-9bb8-5b91f51a8c66"
+  }
+}
