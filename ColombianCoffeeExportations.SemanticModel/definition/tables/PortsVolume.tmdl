@@ -32,18 +32,18 @@ table PortsVolume
 		dataType: int64
 		formatString: 0
 		lineageTag: 5f077d45-0392-4040-85af-51fd2be4d11d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Sacos de 60 Kg. Exportados
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Valor provisional de la Exportación (USD) *'
 		dataType: double
 		lineageTag: b029f741-9f09-4a06-9bce-64293ebc226b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Valor provisional de la Exportación (USD) *
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

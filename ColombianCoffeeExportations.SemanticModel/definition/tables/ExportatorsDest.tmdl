@@ -32,18 +32,18 @@ table ExportatorsDest
 		dataType: int64
 		formatString: 0
 		lineageTag: 4a028fec-3768-4890-8c7d-93ad77f00b64
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Sacos de 60 Kg. Exportados
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Valor Factura (USD)*'
 		dataType: double
 		lineageTag: ff34c243-0331-41fd-8ecd-583ec8c0ac78
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Valor Factura (USD)*
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -65,7 +65,8 @@ table ExportatorsDest
 				    #"Removed Columns2" = Table.RemoveColumns(#"Expanded DimCountry",{"País destino"}),
 				    #"Reordered Columns1" = Table.ReorderColumns(#"Removed Columns2",{"Date_id", "Country_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Reordered Columns1",{{"Date_id", Int64.Type}}),
-				    #"Merged Queries2" = Table.NestedJoin(#"Changed Type1", {"Nombre exportador"}, DimExportator, {"Exportator"}, "DimExportator", JoinKind.LeftOuter),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Changed Type1",{{"Nombre exportador", Text.Proper, type text}}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Capitalized Each Word", {"Nombre exportador"}, DimExportator, {"Exportator"}, "DimExportator", JoinKind.LeftOuter),
 				    #"Expanded DimExportator" = Table.ExpandTableColumn(#"Merged Queries2", "DimExportator", {"Exp_id"}, {"Exp_id"}),
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded DimExportator",{"Date_id", "Country_id", "Exp_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
 				    #"Removed Columns3" = Table.RemoveColumns(#"Reordered Columns2",{"Nombre exportador"})

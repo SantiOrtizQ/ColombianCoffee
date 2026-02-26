@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "cc226bc5e3c1629c8340",
+  "position": {
+    "x": 704,
+    "y": 112,
+    "z": 2,
+    "height": 304,
+    "width": 512,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Full_date"
+                }
+              },
+              "queryRef": "DimDate.Full_date",
+              "nativeQueryRef": "Full_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Valor Total Exportado (USD)"
+                }
+              },
+              "queryRef": "_Measures.Valor Total Exportado (USD)",
+              "nativeQueryRef": "Valor Total Exportado (USD)"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Porcentaje de Incremento por Mes"
+                }
+              },
+              "queryRef": "_Measures.Porcentaje de Incremento por Mes",
+              "nativeQueryRef": "Porcentaje de Incremento por Mes"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DimDate"
+                  }
+                },
+                "Property": "Full_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b65e8721b15e90166d37",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "Full_date"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

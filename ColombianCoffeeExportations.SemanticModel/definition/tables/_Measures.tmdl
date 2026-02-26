@@ -1,6 +1,28 @@
 table _Measures
 	lineageTag: 84ecbe50-aacc-4993-aadb-39a684e25dec
 
+	measure 'Total Sacos Exportados' = SUM(ExportatorsDest[Sacos de 60 Kg. Exportados])
+		formatString: 0
+		lineageTag: bb29b462-c87b-4395-a9a5-619979d8a8e9
+
+	measure 'Valor Total Exportado (USD)' = SUM(ExportatorsDest[Valor Factura (USD)*])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 533451fc-7fb0-4755-9fd3-0a3ecf030d37
+
+	measure 'Porcentaje de Incremento por Mes' =
+			
+			VAR current_month=SELECTEDVALUE(DimDate[Month Number])
+			VAR previous_month=IF(current_month>1, current_month-1, 12)
+			VAR current_year=SELECTEDVALUE(DimDate[Year])
+			VAR previous_year=IF(current_month>1, current_year, current_year-1)
+			VAR current_value=CALCULATE([Valor Total Exportado (USD)], DimDate[Year]=current_year, DimDate[Month Number]=current_month)
+			VAR previous_value=CALCULATE([Valor Total Exportado (USD)], DimDate[Year]=previous_year, DimDate[Month Number]=previous_month)
+			VAR result=DIVIDE(current_value-previous_value, previous_value, 0)
+			RETURN
+			result
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a6504210-e9b5-4007-86ac-bb0c01018c43
+
 	column -
 		dataType: string
 		lineageTag: 75dcb3ea-4bc3-40ce-851b-3cf04139443f

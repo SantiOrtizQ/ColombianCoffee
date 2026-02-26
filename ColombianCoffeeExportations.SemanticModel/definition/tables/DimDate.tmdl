@@ -25,28 +25,28 @@ table DimDate
 		dataType: int64
 		formatString: 0
 		lineageTag: 7d4e29f8-f87c-47f5-9962-67cf6192b9f3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Month Number'
 		dataType: int64
 		formatString: 0
 		lineageTag: 92560c30-be23-452d-b465-42e0c0600343
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Month Number
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column Day
 		dataType: int64
 		formatString: 0
 		lineageTag: a2562104-0a9b-462d-801f-534dc0fc9675
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Day
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Month Name'
 		dataType: string
