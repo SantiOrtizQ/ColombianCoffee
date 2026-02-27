@@ -250,94 +250,11 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "dim_date.date_id": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "DimDate",
-			          "ConceptualProperty": "Date_id"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "date id": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "Date_id": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "date identification": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "date identity": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "date identifier": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "date credential": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "moment id": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
-			          }
-			        },
-			        {
-			          "period id": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.582
-			          }
-			        }
-			      ]
-			    },
 			    "dim_date.full_date": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "DimDate",
-			          "ConceptualProperty": "Full_date"
+			          "ConceptualProperty": "Date_id"
 			        }
 			      },
 			      "State": "Generated",

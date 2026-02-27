@@ -2,13 +2,15 @@ table PortsVolume
 	lineageTag: e84c0d47-bded-4afb-8a99-9db9e18ad500
 
 	column Date_id
-		dataType: int64
-		formatString: 0
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: ac1c1800-2d89-4229-b789-961893e4cbcb
 		summarizeBy: none
 		sourceColumn: Date_id
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column Port_id
 		dataType: int64

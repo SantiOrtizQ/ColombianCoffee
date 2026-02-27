@@ -2,13 +2,15 @@ table ExportatorsDest
 	lineageTag: b919394e-4a78-48da-b740-bfe617608ade
 
 	column Date_id
-		dataType: int64
-		formatString: 0
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 385f0103-1df3-4173-b099-a33b5b157c14
 		summarizeBy: none
 		sourceColumn: Date_id
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column Country_id
 		dataType: int64
@@ -64,8 +66,7 @@ table ExportatorsDest
 				    #"Expanded DimCountry" = Table.ExpandTableColumn(#"Merged Queries1", "DimCountry", {"Country_id"}, {"Country_id"}),
 				    #"Removed Columns2" = Table.RemoveColumns(#"Expanded DimCountry",{"País destino"}),
 				    #"Reordered Columns1" = Table.ReorderColumns(#"Removed Columns2",{"Date_id", "Country_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Reordered Columns1",{{"Date_id", Int64.Type}}),
-				    #"Capitalized Each Word" = Table.TransformColumns(#"Changed Type1",{{"Nombre exportador", Text.Proper, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Reordered Columns1",{{"Nombre exportador", Text.Proper, type text}}),
 				    #"Merged Queries2" = Table.NestedJoin(#"Capitalized Each Word", {"Nombre exportador"}, DimExportator, {"Exportator"}, "DimExportator", JoinKind.LeftOuter),
 				    #"Expanded DimExportator" = Table.ExpandTableColumn(#"Merged Queries2", "DimExportator", {"Exp_id"}, {"Exp_id"}),
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded DimExportator",{"Date_id", "Country_id", "Exp_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),

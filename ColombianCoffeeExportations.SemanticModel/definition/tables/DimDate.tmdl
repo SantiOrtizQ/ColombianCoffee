@@ -2,20 +2,11 @@ table DimDate
 	lineageTag: b18c017d-dffb-431f-96bc-e1788a2ad083
 
 	column Date_id
-		dataType: int64
-		formatString: 0
-		lineageTag: 0d84cdd9-76e7-4e5e-83da-0edd4ec14b6b
-		summarizeBy: none
-		sourceColumn: Date_id
-
-		annotation SummarizationSetBy = Automatic
-
-	column Full_date
 		dataType: dateTime
 		formatString: Long Date
 		lineageTag: fab73053-b3e9-4df1-a10c-85d68cb8c249
 		summarizeBy: none
-		sourceColumn: Full_date
+		sourceColumn: Date_id
 
 		annotation SummarizationSetBy = Automatic
 
@@ -87,9 +78,11 @@ table DimDate
 				    #"Inserted Merged Column1" = Table.AddColumn(#"Renamed Columns", "Full_date", each Text.Combine({Text.From([Year], "en-GB"), Text.From([Month Number], "en-GB"), Text.From([Day], "en-GB")}, "/"), type text),
 				    #"Changed Type3" = Table.TransformColumnTypes(#"Inserted Merged Column1",{{"Full_date", type date}}),
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Changed Type3",{"Date_id", "Full_date", "Year", "Month Number", "Day", "Month Name", "Month"}),
-				    #"Changed Type4" = Table.TransformColumnTypes(#"Reordered Columns2",{{"Date_id", Int64.Type}})
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Reordered Columns2",{{"Date_id", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type4",{"Date_id"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Full_date", "Date_id"}})
 				in
-				    #"Changed Type4"
+				    #"Renamed Columns1"
 
 	annotation PBI_NavigationStepName = Navigation
 

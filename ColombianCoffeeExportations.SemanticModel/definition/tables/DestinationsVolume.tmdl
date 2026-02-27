@@ -2,13 +2,15 @@ table DestinationsVolume
 	lineageTag: 05c26c87-20fd-4f40-a4c2-1e351c8cd882
 
 	column Date_id
-		dataType: int64
-		formatString: 0
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: e46557d6-a2e5-4c77-a117-b1e6793aa646
 		summarizeBy: none
 		sourceColumn: Date_id
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column Country_id
 		dataType: int64
@@ -66,10 +68,9 @@ table DestinationsVolume
 				    #"Expanded DimTypes" = Table.ExpandTableColumn(#"Merged Queries2", "DimTypes", {"Type_id"}, {"DimTypes.Type_id"}),
 				    #"Renamed Columns2" = Table.RenameColumns(#"Expanded DimTypes",{{"DimTypes.Type_id", "Type_id"}}),
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Renamed Columns2",{"Date_id", "Country_id", "Type_id", "Tipo", "Sacos (60 kg)", "Valor (USD)"}),
-				    #"Removed Columns2" = Table.RemoveColumns(#"Reordered Columns2",{"Tipo"}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns2",{{"Date_id", Int64.Type}})
+				    #"Removed Columns2" = Table.RemoveColumns(#"Reordered Columns2",{"Tipo"})
 				in
-				    #"Changed Type"
+				    #"Removed Columns2"
 
 	annotation PBI_NavigationStepName = Navigation
 
