@@ -70,9 +70,10 @@ table ExportatorsDest
 				    #"Merged Queries2" = Table.NestedJoin(#"Capitalized Each Word", {"Nombre exportador"}, DimExportator, {"Exportator"}, "DimExportator", JoinKind.LeftOuter),
 				    #"Expanded DimExportator" = Table.ExpandTableColumn(#"Merged Queries2", "DimExportator", {"Exp_id"}, {"Exp_id"}),
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded DimExportator",{"Date_id", "Country_id", "Exp_id", "Nombre exportador", "Sacos de 60 Kg. Exportados", "Valor Factura (USD)*"}),
-				    #"Removed Columns3" = Table.RemoveColumns(#"Reordered Columns2",{"Nombre exportador"})
+				    #"Removed Columns3" = Table.RemoveColumns(#"Reordered Columns2",{"Nombre exportador"}),
+				    #"Sorted Rows" = Table.Sort(#"Removed Columns3",{{"Date_id", Order.Ascending}})
 				in
-				    #"Removed Columns3"
+				    #"Sorted Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

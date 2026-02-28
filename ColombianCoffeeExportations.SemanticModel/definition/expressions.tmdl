@@ -79,3 +79,17 @@ expression 'source-Pais de destino' =
 
 	annotation PBI_ResultType = Table
 
+expression source-port-location =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\Santiago\OneDrive\Courses\PowerBICourse\ColombianCoffee\ports_location.xlsx"), null, true),
+		    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Latitud", type number}, {"Longitud", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: 69f4ddc6-2447-4f79-a6bc-2ac977792e94
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

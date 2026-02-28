@@ -14,12 +14,13 @@ table _Measures
 	measure 'Porcentaje de Incremento por Mes' =
 			
 			VAR current_date=SELECTEDVALUE(ExportatorsDest[Date_id])
-			VAR previous_date=month
-			VAR current_value=CALCULATE([Valor Total Exportado (USD)], ExportatorsDest[Date_id]=current_date)
-			VAR previous_value=CALCULATE([Valor Total Exportado (USD)], ExportatorsDest[Date_id]=previous_date)
+			VAR previous_date=IF(SELECTEDVALUE(DimDate[Month Number])>1, DATE(SELECTEDVALUE(DimDate[Year]), SELECTEDVALUE(DimDate[Month Number])-1, SELECTEDVALUE(DimDate[Day])), DATE(SELECTEDVALUE(DimDate[Year])-1, 12, SELECTEDVALUE(DimDate[Day])))
+			VAR current_value=CALCULATE([Valor Total Exportado (USD)], DimDate[Date_id]=current_date)
+			VAR previous_value=CALCULATE([Valor Total Exportado (USD)], DimDate[Date_id]=previous_date)
 			VAR result=DIVIDE(current_value-previous_value, previous_value, 0)
 			RETURN
 			result
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Exporters
 		lineageTag: a6504210-e9b5-4007-86ac-bb0c01018c43
 

@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Valor Total Exportado (USD)"
+                  "Property": "Porcentaje de Incremento por Mes"
                 }
               },
-              "queryRef": "_Measures.Valor Total Exportado (USD)",
-              "nativeQueryRef": "Valor Total Exportado (USD)"
+              "queryRef": "_Measures.Porcentaje de Incremento por Mes",
+              "nativeQueryRef": "Porcentaje de Incremento por Mes"
             }
           ]
         },
@@ -60,11 +60,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Porcentaje de Incremento por Mes"
+                  "Property": "Valor Total Exportado (USD)"
                 }
               },
-              "queryRef": "_Measures.Porcentaje de Incremento por Mes",
-              "nativeQueryRef": "Porcentaje de Incremento por Mes"
+              "queryRef": "_Measures.Valor Total Exportado (USD)",
+              "nativeQueryRef": "Valor Total Exportado (USD)"
             }
           ]
         }

@@ -18,6 +18,26 @@ table DimPorts
 
 		annotation SummarizationSetBy = Automatic
 
+	column Latitud
+		dataType: double
+		lineageTag: 233182c4-c991-42af-a10d-beb7c155ea77
+		summarizeBy: none
+		sourceColumn: Latitud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitud
+		dataType: double
+		lineageTag: 4bc89ad3-ede5-45a0-b214-885663b4163b
+		summarizeBy: none
+		sourceColumn: Longitud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition DimPorts = m
 		mode: import
 		source =
@@ -33,9 +53,20 @@ table DimPorts
 				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates",{{"Column1", "Port"}}),
 				    #"Added Index" = Table.AddIndexColumn(#"Renamed Columns", "Index", 1, 1, Int64.Type),
 				    #"Renamed Columns1" = Table.RenameColumns(#"Added Index",{{"Index", "Port_id"}}),
-				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Port_id", "Port"})
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Port_id", "Port"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Reordered Columns",{{"Port", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type1","Aerp.","Aeropuerto",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Aeropuerto José M.Cordoba","Aeropuerto José María Cordoba, Medellín",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Aeropuerto José María Cordoba, Medellín","Aeropuerto Internacional José María Córdova",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Aeropuerto Internacional José María Córdova","Aeropuerto Internacional José María Córdova, Colombia",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Aeropuerto Internacional José María Córdova, Rionegro","",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Aeropuerto Internacional José María Córdova, Colombia","Aeropuerto Internacional José María Córdova, Rionegro",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","AeropuertoAlfonso Bonilla","Aeropuerto Alfonso Bonilla",Replacer.ReplaceText,{"Port"}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","Aeropuerto Internacional José María Córdova, Rionegro","Aeropuerto José María Córdova",Replacer.ReplaceText,{"Port"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Replaced Value7", {"Port_id"}, #"source-port-location", {"Port_id"}, "source-port-location", JoinKind.LeftOuter),
+				    #"Expanded source-port-location" = Table.ExpandTableColumn(#"Merged Queries", "source-port-location", {"Latitud", "Longitud"}, {"Latitud", "Longitud"})
 				in
-				    #"Reordered Columns"
+				    #"Expanded source-port-location"
 
 	annotation PBI_NavigationStepName = Navigation
 
