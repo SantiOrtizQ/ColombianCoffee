@@ -4,10 +4,10 @@
   "position": {
     "x": 687.99999999999989,
     "y": 464.00000000000006,
-    "z": 3,
+    "z": 2000,
     "height": 224,
     "width": 560,
-    "tabOrder": 3
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "tableEx",
@@ -185,34 +185,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "aa43578e0a2e0b72b52c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Valor Total Exportado (USD)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a222491f9c0a2e332b3d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Total Sacos Exportados"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -2,7 +2,7 @@ table _Measures
 	lineageTag: 84ecbe50-aacc-4993-aadb-39a684e25dec
 
 	measure 'Total Sacos Exportados' = SUM(ExportatorsDest[Sacos de 60 Kg. Exportados])
-		formatString: 0
+		formatString: #,0
 		displayFolder: Exporters
 		lineageTag: bb29b462-c87b-4395-a9a5-619979d8a8e9
 
@@ -37,6 +37,14 @@ table _Measures
 	measure 'Tooltip Title' = "Sacos de 60 kg Recibidos - " & SELECTEDVALUE(DimCountry[Country])
 		displayFolder: Labels
 		lineageTag: 28086a4a-cf90-4402-92b8-af0fca72a5f1
+
+	measure 'Sacos de 60 kg Exportados' = SUM(PortsVolume[Sacos de 60 Kg. Exportados])
+		formatString: #,0
+		lineageTag: 46553b0c-7226-450a-9ddc-015edddb62f7
+
+	measure 'Valor Exportado (USD)' = SUM(PortsVolume[Valor provisional de la Exportación (USD) *])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 0670cbc4-b6d7-48a6-a467-3eccf7bd1158
 
 	column -
 		dataType: string

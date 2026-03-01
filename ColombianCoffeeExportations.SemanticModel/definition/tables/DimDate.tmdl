@@ -44,6 +44,9 @@ table DimDate
 		lineageTag: a77be1f0-4c31-4330-8527-6e4a91061584
 		summarizeBy: none
 		sourceColumn: Month Name
+		sortByColumn: 'Month Number'
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

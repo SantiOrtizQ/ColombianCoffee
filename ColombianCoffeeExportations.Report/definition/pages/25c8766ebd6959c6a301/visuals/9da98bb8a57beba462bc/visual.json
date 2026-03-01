@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "cc226bc5e3c1629c8340",
+  "name": "9da98bb8a57beba462bc",
   "position": {
-    "x": 704,
+    "x": 736,
     "y": 144,
-    "z": 1000,
-    "height": 304,
-    "width": 512,
-    "tabOrder": 1000
+    "z": 3001,
+    "height": 288,
+    "width": 528,
+    "tabOrder": 3001
   },
   "visual": {
-    "visualType": "lineStackedColumnComboChart",
+    "visualType": "ribbonChart",
     "query": {
       "queryState": {
         "Category": {
@@ -26,9 +26,27 @@
                   "Property": "Date_id"
                 }
               },
-              "queryRef": "DimDate.Full_date",
+              "queryRef": "DimDate.Date_id",
               "nativeQueryRef": "Date_id",
               "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPorts"
+                    }
+                  },
+                  "Property": "Port"
+                }
+              },
+              "queryRef": "DimPorts.Port",
+              "nativeQueryRef": "Port"
             }
           ]
         },
@@ -42,29 +60,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Porcentaje de Incremento por Mes"
+                  "Property": "Total Sacos Exportados"
                 }
               },
-              "queryRef": "_Measures.Porcentaje de Incremento por Mes",
-              "nativeQueryRef": "Porcentaje de Incremento por Mes"
-            }
-          ]
-        },
-        "Y2": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Valor Total Exportado (USD)"
-                }
-              },
-              "queryRef": "_Measures.Valor Total Exportado (USD)",
-              "nativeQueryRef": "Valor Total Exportado (USD)"
+              "queryRef": "_Measures.Total Sacos Exportados",
+              "nativeQueryRef": "Total Sacos Exportados"
             }
           ]
         }
@@ -87,6 +87,28 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "showGradientLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }
