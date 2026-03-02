@@ -1,0 +1,26 @@
+table _SUMALLPORTS
+	lineageTag: 264d73b4-8a0b-460f-8a52-495b09712c4b
+
+	column Port
+		lineageTag: 609aa33d-b863-41ef-9299-ab015fbc91f3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DimPorts[Port]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suma Puertos'
+		formatString: 0
+		lineageTag: 00105f8a-fd8d-4531-bd9f-0f6b1a6ec9bf
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Suma Puertos]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _SUMALLPORTS = calculated
+		mode: import
+		source = SUMMARIZE(PortsVolume, DimPorts[Port], "Suma Puertos", SUM(PortsVolume[Sacos de 60 Kg. Exportados]))
+
+	annotation PBI_Id = 5562f51d5cad4c97a159ac892ae21337
+

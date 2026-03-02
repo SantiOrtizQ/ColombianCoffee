@@ -1,0 +1,27 @@
+table _SUMALLDATESPORTS
+	lineageTag: b9f9d970-b331-468f-b5f3-beb6d5949980
+
+	column Date_id
+		formatString: General Date
+		lineageTag: dcbd8857-d835-42a9-9b95-34448b43404a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: PortsVolume[Date_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suma Puertos'
+		formatString: 0
+		lineageTag: d56224a1-e073-4b7c-935d-7db7e5e8548b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Suma Puertos]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _SUMALLDATESPORTS = calculated
+		mode: import
+		source = SUMMARIZE(PortsVolume, PortsVolume[Date_id], "Suma Puertos", SUM(PortsVolume[Sacos de 60 Kg. Exportados]))
+
+	annotation PBI_Id = ab4b74a92aaa41c6b75bf94dcaad4fbb
+

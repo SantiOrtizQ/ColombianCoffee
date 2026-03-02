@@ -21,6 +21,8 @@ ref table DimExportator
 ref table DestinationsVolume
 ref table ExportatorsDest
 ref table PortsVolume
+ref table _SUMALLDATESPORTS
+ref table _SUMALLPORTS
 
 ref cultureInfo en-US
 

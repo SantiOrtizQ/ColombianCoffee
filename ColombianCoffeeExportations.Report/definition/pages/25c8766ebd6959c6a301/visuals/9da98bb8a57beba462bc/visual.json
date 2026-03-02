@@ -108,6 +108,19 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Fecha'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
