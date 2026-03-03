@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "6d7bdfb49139293e9921",
   "position": {
-    "x": 687.99999999999989,
-    "y": 464.00000000000006,
+    "x": 792,
+    "y": 464,
     "z": 2000,
     "height": 224,
-    "width": 560,
+    "width": 456,
     "tabOrder": 2000
   },
   "visual": {
@@ -38,12 +38,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Valor Total Exportado (USD)"
+                  "Property": "Total Sacos Exportados"
                 }
               },
-              "queryRef": "_Measures.Total Value Exp",
-              "nativeQueryRef": "Valor Exportado",
-              "displayName": "Valor Exportado"
+              "queryRef": "_Measures.Total Sacos Exp",
+              "nativeQueryRef": "Sacos Exportados (60 kg)",
+              "displayName": "Sacos Exportados (60 kg)"
             },
             {
               "field": {
@@ -53,12 +53,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Total Sacos Exportados"
+                  "Property": "Valor Total Exportado (USD)"
                 }
               },
-              "queryRef": "_Measures.Total Sacos Exp",
-              "nativeQueryRef": "Sacos Exportados (60 kg)",
-              "displayName": "Sacos Exportados (60 kg)"
+              "queryRef": "_Measures.Total Value Exp",
+              "nativeQueryRef": "Valor Exportado",
+              "displayName": "Valor Exportado"
             }
           ]
         }
@@ -80,6 +80,88 @@
           }
         ]
       }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "175.5660660687859D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimExportator.Exportator"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "127.90950594214081D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Total Value Exp"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.64587142230917D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Total Sacos Exp"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Datos de Exportadores Registrados'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },

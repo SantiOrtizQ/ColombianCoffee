@@ -65,11 +65,39 @@
                       "Entity": "_Measures"
                     }
                   },
+                  "Property": "Total Sacos Exportados Max"
+                }
+              },
+              "queryRef": "_Measures.Exportaciones Totales MAX",
+              "nativeQueryRef": "Total Sacos Exportados Max"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
                   "Property": "Menor Puerto"
                 }
               },
               "queryRef": "_Measures.Menor Puerto",
               "nativeQueryRef": "Menor Puerto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sacos Exportados Min"
+                }
+              },
+              "queryRef": "_Measures.Exportaciones Totales Min",
+              "nativeQueryRef": "Total Sacos Exportados Min"
             }
           ]
         }
@@ -118,6 +146,36 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Sacos Exportados'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Exportaciones Totales MAX"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Sacos Exportados'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Exportaciones Totales Min"
           }
         }
       ]

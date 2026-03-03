@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "a1053be9332725a47420",
   "position": {
-    "x": 736,
+    "x": 728,
     "y": 448,
     "z": 2000,
-    "height": 240,
-    "width": 528,
+    "height": 240.00000000000003,
+    "width": 536,
     "tabOrder": 2000
   },
   "visual": {
@@ -99,16 +99,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Measures"
+                    "Entity": "DimPorts"
                   }
                 },
-                "Property": "Sacos de 60 kg Exportados"
+                "Property": "Port"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -168,6 +168,38 @@
         "root": {}
       }
     ],
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "115.64588038640942D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Sacos de 60 kg Exportados"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.5561138437542D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Valor Exportado (USD)"
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }

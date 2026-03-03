@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "aa54ca7eeb67ed01099e",
+  "name": "b43a16ad8c610892019d",
   "position": {
-    "x": 64,
-    "y": 64,
-    "z": 0,
-    "height": 352,
-    "width": 480.00000000000006,
-    "tabOrder": 0
+    "x": 448,
+    "y": 208,
+    "z": 3001,
+    "height": 240.00000000000003,
+    "width": 328,
+    "tabOrder": 3001
   },
   "visual": {
     "visualType": "azureMap",
@@ -108,11 +108,18 @@
             "showNavigationControls": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
             "worldWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showStylePicker": {
               "expr": {
                 "Literal": {
                   "Value": "false"

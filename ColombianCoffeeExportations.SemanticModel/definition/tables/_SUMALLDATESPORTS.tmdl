@@ -1,7 +1,9 @@
 table _SUMALLDATESPORTS
+	isHidden
 	lineageTag: b9f9d970-b331-468f-b5f3-beb6d5949980
 
 	column Date_id
+		isHidden
 		formatString: General Date
 		lineageTag: dcbd8857-d835-42a9-9b95-34448b43404a
 		summarizeBy: none
@@ -11,6 +13,7 @@ table _SUMALLDATESPORTS
 		annotation SummarizationSetBy = Automatic
 
 	column 'Suma Puertos'
+		isHidden
 		formatString: 0
 		lineageTag: d56224a1-e073-4b7c-935d-7db7e5e8548b
 		summarizeBy: sum

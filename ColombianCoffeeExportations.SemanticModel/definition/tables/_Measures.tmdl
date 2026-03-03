@@ -40,32 +40,49 @@ table _Measures
 
 	measure 'Sacos de 60 kg Exportados' = SUM(PortsVolume[Sacos de 60 Kg. Exportados])
 		formatString: #,0
+		displayFolder: Ports
 		lineageTag: 46553b0c-7226-450a-9ddc-015edddb62f7
 
 	measure 'Valor Exportado (USD)' = SUM(PortsVolume[Valor provisional de la Exportación (USD) *])
 		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Ports
 		lineageTag: 0670cbc4-b6d7-48a6-a467-3eccf7bd1158
 
 	measure 'Ports Card Title' = "Resultados " & IF(MIN(DimDate[Year])=MAX(DimDate[Year]), MIN(DimDate[Year]), MIN(DimDate[Year]) & " - " & MAX(DimDate[Year]))
+		displayFolder: Ports
 		lineageTag: 13275cd0-22f9-4b26-b8da-87f0c8b40cee
 
 	measure 'Mes de Mayor Exportacion' = CALCULATE(FIRSTNONBLANK(_SUMALLDATESPORTS[Date_id], 1), FILTER(_SUMALLDATESPORTS, _SUMALLDATESPORTS[Suma Puertos]=MAX(_SUMALLDATESPORTS[Suma Puertos])))
 		formatString: yyyy-mm
+		displayFolder: Ports
 		lineageTag: 05d4cd89-5e17-4e20-b061-0106f473d81c
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	measure 'Mes de Menor Exportación' = CALCULATE(FIRSTNONBLANK(_SUMALLDATESPORTS[Date_id], 1), FILTER(_SUMALLDATESPORTS, _SUMALLDATESPORTS[Suma Puertos]=MIN(_SUMALLDATESPORTS[Suma Puertos])))
 		formatString: yyyy-mm
+		displayFolder: Ports
 		lineageTag: 61a384dd-74e5-441f-aafb-d9b75727a946
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	measure 'Mayor Puerto' = CALCULATE(FIRSTNONBLANK(_SUMALLPORTS[Port], 1), FILTER(_SUMALLPORTS, _SUMALLPORTS[Suma Puertos]=MAX(_SUMALLPORTS[Suma Puertos])))
+		displayFolder: Ports
 		lineageTag: 982983aa-fcba-4e09-8014-f656ea5d3260
 
 	measure 'Menor Puerto' = CALCULATE(FIRSTNONBLANK(_SUMALLPORTS[Port], 1), FILTER(_SUMALLPORTS, _SUMALLPORTS[Suma Puertos]=MIN(_SUMALLPORTS[Suma Puertos])))
+		displayFolder: Ports
 		lineageTag: 2a3d2df1-95b7-4476-83bc-6419fabc540a
+
+	measure 'Total Sacos Exportados Max' = MAX(_SUMALLPORTS[Suma Puertos])
+		formatString: 0
+		displayFolder: Ports
+		lineageTag: 6dcda91e-f18c-42ce-b36a-a88b09e3a5bf
+
+	measure 'Total Sacos Exportados Min' = MIN(_SUMALLPORTS[Suma Puertos])
+		formatString: 0
+		displayFolder: Ports
+		lineageTag: b33af49c-cfb5-483b-a011-28fcbab837d5
 
 	column -
 		dataType: string

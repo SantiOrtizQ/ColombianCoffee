@@ -1,7 +1,9 @@
 table _SUMALLPORTS
+	isHidden
 	lineageTag: 264d73b4-8a0b-460f-8a52-495b09712c4b
 
 	column Port
+		isHidden
 		lineageTag: 609aa33d-b863-41ef-9299-ab015fbc91f3
 		summarizeBy: none
 		isNameInferred
@@ -10,6 +12,7 @@ table _SUMALLPORTS
 		annotation SummarizationSetBy = Automatic
 
 	column 'Suma Puertos'
+		isHidden
 		formatString: 0
 		lineageTag: 00105f8a-fd8d-4531-bd9f-0f6b1a6ec9bf
 		summarizeBy: sum
