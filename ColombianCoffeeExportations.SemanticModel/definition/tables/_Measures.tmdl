@@ -84,6 +84,10 @@ table _Measures
 		displayFolder: Ports
 		lineageTag: b33af49c-cfb5-483b-a011-28fcbab837d5
 
+	measure 'Main Graph Title Exportadores' = "Exportaciones de Café en el Tiempo " & IF(MIN(DimDate[Year])=MAX(DimDate[Year]), SELECTEDVALUE(DimDate[Year]), MIN(DimDate[Year]) & " - " & MAX(DimDate[Year]))
+		displayFolder: Labels
+		lineageTag: b240772a-5b36-4c74-bf5d-de1c0d4fe802
+
 	column -
 		dataType: string
 		isHidden

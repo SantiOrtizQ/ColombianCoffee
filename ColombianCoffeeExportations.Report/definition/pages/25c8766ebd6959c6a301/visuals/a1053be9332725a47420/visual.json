@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "a1053be9332725a47420",
   "position": {
-    "x": 728,
+    "x": 744,
     "y": 448,
     "z": 2000,
-    "height": 240.00000000000003,
-    "width": 536,
+    "height": 256,
+    "width": 512,
     "tabOrder": 2000
   },
   "visual": {
@@ -99,16 +99,16 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimPorts"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "Port"
+                "Property": "Sacos de 60 kg Exportados"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }

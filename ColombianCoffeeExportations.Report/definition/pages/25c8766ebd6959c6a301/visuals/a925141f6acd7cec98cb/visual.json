@@ -5,8 +5,8 @@
     "x": 256,
     "y": 144,
     "z": 0,
-    "height": 272,
-    "width": 448,
+    "height": 296,
+    "width": 464,
     "tabOrder": 0
   },
   "visual": {
@@ -178,6 +178,21 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ubicaciones de Puertos de Exportación'"
                 }
               }
             }

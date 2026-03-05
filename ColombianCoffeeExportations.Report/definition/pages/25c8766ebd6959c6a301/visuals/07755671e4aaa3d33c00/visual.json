@@ -1,38 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "9da98bb8a57beba462bc",
+  "name": "07755671e4aaa3d33c00",
   "position": {
-    "x": 728,
-    "y": 144,
-    "z": 3001,
-    "height": 296,
-    "width": 528,
-    "tabOrder": 3001
+    "x": 360,
+    "y": 448,
+    "z": 3004,
+    "height": 256,
+    "width": 376,
+    "tabOrder": 3004
   },
   "visual": {
-    "visualType": "ribbonChart",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
         "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "DimDate"
-                    }
-                  },
-                  "Property": "Date_id"
-                }
-              },
-              "queryRef": "DimDate.Date_id",
-              "nativeQueryRef": "Date_id",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
           "projections": [
             {
               "field": {
@@ -46,7 +27,8 @@
                 }
               },
               "queryRef": "DimPorts.Port",
-              "nativeQueryRef": "Port"
+              "nativeQueryRef": "Port",
+              "active": true
             }
           ]
         },
@@ -73,49 +55,29 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimDate"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "Date_id"
+                "Property": "Sacos de 60 kg Exportados"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "legend": [
+      "labels": [
         {
           "properties": {
-            "showGradientLegend": {
+            "labelStyle": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Fecha'"
+                  "Value": "'Percent of total'"
                 }
               }
             }
