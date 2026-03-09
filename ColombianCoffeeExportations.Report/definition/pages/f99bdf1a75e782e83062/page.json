@@ -1,10 +1,88 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
-  "name": "157499ee129b43a7518d",
-  "displayName": "Exportaciones",
+  "name": "f99bdf1a75e782e83062",
+  "displayName": "Drillthrough Puertos",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "73c013f0a1e3bb022a0b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimPorts"
+              }
+            },
+            "Property": "Port"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "DimPorts",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Port"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Buenaventura'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "15522e0d268350700735",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "bb06d0da00088c0be092",
+        "boundFilter": "73c013f0a1e3bb022a0b",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimPorts"
+              }
+            },
+            "Property": "Port"
+          }
+        }
+      }
+    ]
+  },
   "objects": {
     "background": [
       {

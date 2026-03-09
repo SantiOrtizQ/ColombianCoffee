@@ -23,6 +23,7 @@ ref table ExportatorsDest
 ref table PortsVolume
 ref table _SUMALLDATESPORTS
 ref table _SUMALLPORTS
+ref table 'GroupByTable Ports'
 
 ref cultureInfo en-US
 

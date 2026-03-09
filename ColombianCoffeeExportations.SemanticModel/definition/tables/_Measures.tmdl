@@ -88,6 +88,25 @@ table _Measures
 		displayFolder: Labels
 		lineageTag: b240772a-5b36-4c74-bf5d-de1c0d4fe802
 
+	measure 'Sacos de Cafe Verde' = CALCULATE([Sacos de 60 kg Recibidos], DimTypes[Coffee Type]="Café Verde")
+		formatString: 0
+		displayFolder: Dest
+		lineageTag: f4a2f8a6-7a75-4a51-b40a-8ea269122419
+
+	measure 'Sacos de Cafe Soluble' = CALCULATE([Sacos de 60 kg Recibidos], DimTypes[Coffee Type]="Soluble")
+		formatString: 0
+		displayFolder: Dest
+		lineageTag: 14882940-c640-42ff-8e8f-70a0be5505d5
+
+	measure 'Mejor Fecha Puerto' = CALCULATE(FIRSTNONBLANK('GroupByTable Ports'[DimDate_Date_id], 1), FILTER('GroupByTable Ports', 'GroupByTable Ports'[TotalperYear]=MAX('GroupByTable Ports'[TotalperYear])))
+		formatString: mmmm yyyy
+		lineageTag: 7c1dfef5-3827-46f6-9c8c-eadd99f7930b
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure Ranking
+		lineageTag: 4695d025-c382-4676-b3c8-e6b72b42e7ee
+
 	column -
 		dataType: string
 		isHidden

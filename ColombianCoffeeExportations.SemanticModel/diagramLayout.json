@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 482.23693108991756,
+        "x": 489.69240597190856,
         "y": 0
       },
       "nodes": [
@@ -19,7 +19,7 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 3
         },
         {
           "location": {
@@ -32,7 +32,7 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 9
         },
         {
           "location": {
@@ -45,7 +45,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 4
         },
         {
           "location": {
@@ -58,7 +58,7 @@
             "height": 248,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 12
         },
         {
           "location": {
@@ -71,7 +71,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 5
         },
         {
           "location": {
@@ -81,10 +81,10 @@
           "nodeIndex": "DimPorts",
           "nodeLineageTag": "19659f0b-e874-4a10-ada8-cdf901637f2d",
           "size": {
-            "height": 128,
+            "height": 200.90720309907169,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 6
         },
         {
           "location": {
@@ -97,7 +97,7 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 7
         },
         {
           "location": {
@@ -110,7 +110,7 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 8
         },
         {
           "location": {
@@ -123,19 +123,20 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 9
+          "zIndex": 10
         },
         {
           "location": {
-            "x": 1469.7332497360794,
-            "y": 341.41835182672389
+            "x": 1743.7637717291418,
+            "y": 98.813348410847482
           },
           "nodeIndex": "_SUMALLDATESPORTS",
+          "nodeLineageTag": "b9f9d970-b331-468f-b5f3-beb6d5949980",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
@@ -147,7 +148,20 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1761.1887246180706,
+            "y": 592.82250044421244
+          },
+          "nodeIndex": "GroupByTable Ports",
+          "nodeLineageTag": "27e0ebc8-0581-4941-8a23-11cead716e36",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 11
         }
       ],
       "name": "All tables",

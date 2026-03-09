@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "f68fbad3dc5d287cc400",
+  "name": "eae3e2c60bdb11e96b14",
   "position": {
-    "x": 24,
-    "y": 208,
-    "z": 7000,
-    "height": 248,
-    "width": 416,
-    "tabOrder": 7000
+    "x": 104,
+    "y": 256,
+    "z": 2000,
+    "height": 288,
+    "width": 376,
+    "tabOrder": 2000
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimCountry"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "Country"
+                  "Property": "Date_id"
                 }
               },
-              "queryRef": "DimCountry.Country",
-              "nativeQueryRef": "Country",
+              "queryRef": "DimDate.Date_id",
+              "nativeQueryRef": "Date_id",
               "active": true
             }
           ]
@@ -55,29 +55,29 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Measures"
+                    "Entity": "DimDate"
                   }
                 },
-                "Property": "Sacos de 60 kg Recibidos"
+                "Property": "Date_id"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "labels": [
+      "categoryAxis": [
         {
           "properties": {
-            "labelStyle": {
+            "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Percent of total'"
+                  "Value": "'Fecha'"
                 }
               }
             }
@@ -91,40 +91,13 @@
           "properties": {
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Porcentaje de Exportaciones por País'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "border": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
-                  }
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "5D"
+                  },
+                  "Property": "Tooltip Title"
                 }
               }
             }

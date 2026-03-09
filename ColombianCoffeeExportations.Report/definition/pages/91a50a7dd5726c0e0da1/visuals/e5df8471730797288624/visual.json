@@ -1,0 +1,196 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "e5df8471730797288624",
+  "position": {
+    "x": 104,
+    "y": 32,
+    "z": 1000,
+    "height": 208,
+    "width": 1072,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DimCountry"
+                        }
+                      },
+                      "Property": "Country"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(DimCountry.Country)",
+              "nativeQueryRef": "First Country"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sacos de 60 kg Recibidos"
+                }
+              },
+              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
+              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sacos de Cafe Verde"
+                }
+              },
+              "queryRef": "_Measures.Sacos de Cafe Verde",
+              "nativeQueryRef": "Sacos de Cafe Verde"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sacos de Cafe Soluble"
+                }
+              },
+              "queryRef": "_Measures.Sacos de Cafe Soluble",
+              "nativeQueryRef": "Sacos de Cafe Soluble"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Valor Recibido (USD)"
+                }
+              },
+              "queryRef": "_Measures.Total Valor Recibido (USD)",
+              "nativeQueryRef": "Total Valor Recibido (USD)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "DimCountry"
+                      }
+                    },
+                    "Property": "Country"
+                  }
+                },
+                "Function": 3
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "label": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'País'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Min(DimCountry.Country)"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sacos Totales'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Sacos de 60 kg Recibidos"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Café Verde'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Sacos de Cafe Verde"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Soluble'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Sacos de Cafe Soluble"
+          }
+        },
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Valor Total'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Total Valor Recibido (USD)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

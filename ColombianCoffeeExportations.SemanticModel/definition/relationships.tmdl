@@ -34,3 +34,11 @@ relationship 191d3418-6ee8-bcba-3627-6cba71af418b
 	fromColumn: ExportatorsDest.Date_id
 	toColumn: DimDate.Date_id
 
+relationship 6c4e9815-f6f8-9a66-b5d0-81597f697bd9
+	fromColumn: 'GroupByTable Ports'.DimPorts_Port
+	toColumn: DimPorts.Port
+
+relationship ee070e9f-4ee3-e650-d611-35aad9591b04
+	fromColumn: 'GroupByTable Ports'.DimDate_Date_id
+	toColumn: DimDate.Date_id
+

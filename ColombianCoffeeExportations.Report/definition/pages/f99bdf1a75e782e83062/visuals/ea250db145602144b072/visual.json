@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "ea250db145602144b072",
+  "position": {
+    "x": 920,
+    "y": 472,
+    "z": 1001,
+    "height": 208,
+    "width": 304,
+    "tabOrder": 1001
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "GroupByTable Ports"
+                    }
+                  },
+                  "Property": "DimDate_Date_id"
+                }
+              },
+              "queryRef": "GroupByTable Ports.DimDate_Date_id",
+              "nativeQueryRef": "DimDate_Date_id"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "GroupByTable Ports"
+                        }
+                      },
+                      "Property": "TotalperYear"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(GroupByTable Ports.TotalperYear)",
+              "nativeQueryRef": "Sum of TotalperYear"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -214,51 +214,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b09f916ea1607edc8345",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimDate"
-              }
-            },
-            "Property": "Date_id"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9eb0fbb2edc006d50e0e",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Porcentaje de Incremento por Mes"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "6995c70f037609c66006",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Valor Total Exportado (USD)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

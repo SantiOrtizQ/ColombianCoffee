@@ -21,7 +21,7 @@ table DimPorts
 	column Latitud
 		dataType: double
 		lineageTag: 233182c4-c991-42af-a10d-beb7c155ea77
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Latitud
 
 		annotation SummarizationSetBy = Automatic
@@ -31,7 +31,7 @@ table DimPorts
 	column Longitud
 		dataType: double
 		lineageTag: 4bc89ad3-ede5-45a0-b214-885663b4163b
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Longitud
 
 		annotation SummarizationSetBy = Automatic

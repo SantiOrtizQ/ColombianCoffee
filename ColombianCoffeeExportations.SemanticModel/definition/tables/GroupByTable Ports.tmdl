@@ -1,0 +1,37 @@
+table 'GroupByTable Ports'
+	lineageTag: 27e0ebc8-0581-4941-8a23-11cead716e36
+
+	column DimPorts_Port
+		lineageTag: de9ca00c-5c5a-4007-bbf8-7f908b7b5557
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DimPorts[Port]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalperYear
+		formatString: #,0
+		lineageTag: e17b872c-3cb9-45a5-8836-cbfb8999c5b2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [TotalperYear]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DimDate_Date_id
+		formatString: mmmm yyyy
+		lineageTag: 0193ebf5-0049-482f-9f03-cc39345c7acc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DimDate[Date_id]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition 'GroupByTable Ports' = calculated
+		mode: import
+		source = GROUPBY(PortsVolume, DimDate[Date_id], DimPorts[Port], "TotalperYear", SUMX(CURRENTGROUP(), PortsVolume[Sacos de 60 Kg. Exportados]))
+
+	annotation PBI_Id = 568dcad1804e408487ef25785e7d39da
+

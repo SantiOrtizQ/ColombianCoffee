@@ -4,10 +4,10 @@
   "position": {
     "x": 416,
     "y": 464,
-    "z": 3002,
+    "z": 5000,
     "height": 240,
     "width": 368,
-    "tabOrder": 3002
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -99,16 +99,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Measures"
+                    "Entity": "DimCountry"
                   }
                 },
-                "Property": "Total Valor Recibido (USD)"
+                "Property": "Country"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
