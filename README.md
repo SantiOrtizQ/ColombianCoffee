@@ -66,7 +66,7 @@ The dashboard allows users to:
 
 ## 🖼️ Dashboard Preview
 
-Add a screenshot of the dashboard in the `images` folder and display it here.
+![Dashboard Preview](exportacionesPreview.png)
 
 ## 📊 Data Sources
 
