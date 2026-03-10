@@ -1,34 +1,33 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "eae3e2c60bdb11e96b14",
+  "name": "2682177102a643ce6381",
   "position": {
-    "x": 656,
-    "y": 208,
-    "z": 2000,
-    "height": 272,
-    "width": 616,
-    "tabOrder": 2000
+    "x": 424,
+    "y": 488,
+    "z": 2003,
+    "height": 224,
+    "width": 432,
+    "tabOrder": 2003
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "gauge",
     "query": {
       "queryState": {
-        "Category": {
+        "MaxValue": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimDate"
+                      "Entity": "_Measures"
                     }
                   },
-                  "Property": "Date_id"
+                  "Property": "Sacos Totales Sin Filtros"
                 }
               },
-              "queryRef": "DimDate.Date_id",
-              "nativeQueryRef": "Date_id",
-              "active": true
+              "queryRef": "_Measures.Sacos Totales Sin Filtros",
+              "nativeQueryRef": "Sacos Totales Sin Filtros"
             }
           ]
         },
@@ -55,55 +54,20 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimDate"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "Date_id"
+                "Property": "Sacos de 60 kg Recibidos"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "categoryAxis": [
-        {
-          "properties": {
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Fecha'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Tooltip Title"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

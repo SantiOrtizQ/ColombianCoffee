@@ -173,5 +173,12 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "ef833c54273e698c3e98",
+      "target": "2682177102a643ce6381",
+      "type": "NoFilter"
+    }
+  ]
 }
