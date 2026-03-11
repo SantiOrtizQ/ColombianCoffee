@@ -2,55 +2,138 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "ea250db145602144b072",
   "position": {
-    "x": 920,
+    "x": 864,
     "y": 472,
     "z": 1001,
-    "height": 208,
-    "width": 304,
+    "height": 239.99999999999997,
+    "width": 408,
     "tabOrder": 1001
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Values": {
+        "Rows": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "GroupByTable Ports"
+                      "Entity": "DimDate"
                     }
                   },
-                  "Property": "DimDate_Date_id"
+                  "Property": "Year"
                 }
               },
-              "queryRef": "GroupByTable Ports.DimDate_Date_id",
-              "nativeQueryRef": "DimDate_Date_id"
+              "queryRef": "DimDate.Year",
+              "nativeQueryRef": "Year",
+              "active": true
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "GroupByTable Ports"
-                        }
-                      },
-                      "Property": "TotalperYear"
+                    "SourceRef": {
+                      "Entity": "DimDate"
                     }
                   },
-                  "Function": 0
+                  "Property": "Month Name"
                 }
               },
-              "queryRef": "Sum(GroupByTable Ports.TotalperYear)",
-              "nativeQueryRef": "Sum of TotalperYear"
+              "queryRef": "DimDate.Month Name",
+              "nativeQueryRef": "Month Name",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sacos de 60 kg Exportados"
+                }
+              },
+              "queryRef": "_Measures.Sacos de 60 kg Exportados",
+              "nativeQueryRef": "Sacos de 60 kg Exportados"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Valor Exportado (USD)"
+                }
+              },
+              "queryRef": "_Measures.Valor Exportado (USD)",
+              "nativeQueryRef": "Valor Exportado (USD)"
             }
           ]
         }
       }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "DimDate.Year"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "DimDate.Month Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "132.8055062404702D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Sacos de 60 kg Exportados"
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

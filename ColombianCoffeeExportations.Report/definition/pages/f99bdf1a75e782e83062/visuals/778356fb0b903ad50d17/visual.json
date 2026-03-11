@@ -1,34 +1,33 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "eae3e2c60bdb11e96b14",
+  "name": "778356fb0b903ad50d17",
   "position": {
-    "x": 656,
-    "y": 208,
-    "z": 2000,
-    "height": 272,
-    "width": 616,
-    "tabOrder": 2000
+    "x": 424,
+    "y": 472,
+    "z": 1004,
+    "height": 239.99999999999997,
+    "width": 432,
+    "tabOrder": 1004
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "gauge",
     "query": {
       "queryState": {
-        "Category": {
+        "MaxValue": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimDate"
+                      "Entity": "_Measures"
                     }
                   },
-                  "Property": "Date_id"
+                  "Property": "Sacos de 60 kg Exportados Sin Filtros"
                 }
               },
-              "queryRef": "DimDate.Date_id",
-              "nativeQueryRef": "Date_id",
-              "active": true
+              "queryRef": "_Measures.Sacos de 60 kg Exportados Sin Filtros",
+              "nativeQueryRef": "Sacos de 60 kg Exportados Sin Filtros"
             }
           ]
         },
@@ -42,11 +41,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sacos de 60 kg Recibidos"
+                  "Property": "Sacos de 60 kg Exportados"
                 }
               },
-              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
-              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+              "queryRef": "_Measures.Sacos de 60 kg Exportados",
+              "nativeQueryRef": "Sacos de 60 kg Exportados"
             }
           ]
         }
@@ -55,59 +54,66 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimDate"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "Date_id"
+                "Property": "Sacos de 60 kg Exportados"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "categoryAxis": [
+      "labels": [
         {
           "properties": {
-            "titleText": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Fecha'"
+                  "Value": "true"
                 }
               }
             }
           }
         }
       ],
-      "dataPoint": [
+      "target": [
         {
           "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": 0
-                    }
-                  }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
           }
         }
-      ]
-    },
-    "visualContainerObjects": {
-      "title": [
+      ],
+      "calloutValue": [
         {
           "properties": {
-            "text": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showDynamicLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "dynamicLabelValue": {
               "expr": {
                 "Measure": {
                   "Expression": {
@@ -115,7 +121,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Tooltip Title"
+                  "Property": "Porcentaje de Sacos Pais"
                 }
               }
             }

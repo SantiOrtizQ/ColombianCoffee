@@ -112,6 +112,32 @@ table _Measures
 		displayFolder: Dest
 		lineageTag: 6c9f9dea-58e9-4adb-a384-1acb02237d73
 
+	measure 'Porcentaje de Sacos Pais' = DIVIDE([Sacos de 60 kg Recibidos], [Sacos Totales Sin Filtros], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Dest
+		lineageTag: 61771b79-90f8-4e62-857f-a2313eb8f879
+
+	measure 'Porcentaje de Incremento Sacos Puertos' =
+			
+			VAR ano_actual=SELECTEDVALUE(DimDate[Year])
+			VAR ano_anterior=ano_actual-1
+			VAR sacos_actuales=CALCULATE([Sacos de 60 kg Exportados], DimDate[Year]=ano_actual)
+			VAR sacos_anterior=CALCULATE([Sacos de 60 kg Exportados], DimDate[Year]=ano_anterior)
+			VAR resultado=DIVIDE(sacos_actuales-sacos_anterior, sacos_anterior)
+			RETURN
+			resultado
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Ports
+		lineageTag: 5a15fbcb-a78e-4d28-adec-ebb072c907e7
+
+	measure 'Porcentaje de Exportaciones Puerto' = DIVIDE([Sacos de 60 kg Exportados], CALCULATE([Sacos de 60 kg Exportados], REMOVEFILTERS()), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c08a7ccb-8cd8-4dbc-8537-316ffe785935
+
+	measure 'Sacos de 60 kg Exportados Sin Filtros' = CALCULATE([Sacos de 60 kg Exportados], REMOVEFILTERS())
+		formatString: 0
+		lineageTag: c52e8c6b-1038-4f65-9379-a70e66677ee8
+
 	column -
 		dataType: string
 		isHidden
