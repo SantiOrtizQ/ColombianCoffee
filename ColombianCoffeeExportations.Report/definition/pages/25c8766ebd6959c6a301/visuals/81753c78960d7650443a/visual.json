@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "f68fbad3dc5d287cc400",
+  "name": "81753c78960d7650443a",
   "position": {
-    "x": 8,
-    "y": 208,
+    "x": 24,
+    "y": 448,
     "z": 7000,
-    "height": 248,
-    "width": 432,
+    "height": 256,
+    "width": 328,
     "tabOrder": 7000
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimCountry"
+                      "Entity": "DimTypes"
                     }
                   },
-                  "Property": "Country"
+                  "Property": "Coffee Type"
                 }
               },
-              "queryRef": "DimCountry.Country",
-              "nativeQueryRef": "Country",
+              "queryRef": "DimTypes.Coffee Type",
+              "nativeQueryRef": "Coffee Type",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sacos de 60 kg Recibidos"
+                  "Property": "Sacos de 60 kg Exportados"
                 }
               },
-              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
-              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+              "queryRef": "_Measures.Sacos de 60 kg Exportados",
+              "nativeQueryRef": "Sacos de 60 kg Exportados"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Sacos de 60 kg Recibidos"
+                "Property": "Sacos de 60 kg Exportados"
               }
             },
             "direction": "Descending"
@@ -74,10 +74,67 @@
       "labels": [
         {
           "properties": {
-            "labelStyle": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Percent of total'"
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "dynamicLabelValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sacos de 60 kg Recibidos"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "highlightMatching": 1
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
                 }
               }
             }
@@ -86,19 +143,6 @@
       ]
     },
     "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Porcentaje de Exportaciones por País'"
-                }
-              }
-            }
-          }
-        }
-      ],
       "border": [
         {
           "properties": {

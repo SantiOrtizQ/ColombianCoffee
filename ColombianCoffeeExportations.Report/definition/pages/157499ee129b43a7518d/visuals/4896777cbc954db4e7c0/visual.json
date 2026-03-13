@@ -5,7 +5,7 @@
     "x": 416,
     "y": 464,
     "z": 5000,
-    "height": 240,
+    "height": 248,
     "width": 368,
     "tabOrder": 5000
   },
@@ -99,16 +99,16 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimCountry"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "Country"
+                "Property": "Sacos de 60 kg Recibidos"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }

@@ -95,5 +95,12 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "438b845090ae076266d0",
+      "target": "f68fbad3dc5d287cc400",
+      "type": "DataFilter"
+    }
+  ]
 }

@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "a56f5d11000510089802",
   "position": {
-    "x": 240,
-    "y": 32,
+    "x": 24,
+    "y": 24,
     "z": 3000,
-    "height": 80,
+    "height": 96,
     "width": 800,
     "tabOrder": 3000
   },
@@ -19,10 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Puertos de Exportación de Café",
+                    "value": "Puertos de Exportación",
                     "textStyle": {
                       "fontFamily": "Cambria Math",
-                      "fontSize": "42pt"
+                      "fontSize": "54pt"
                     }
                   }
                 ],

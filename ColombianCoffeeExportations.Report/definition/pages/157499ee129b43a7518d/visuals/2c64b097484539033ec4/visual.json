@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "2c64b097484539033ec4",
   "position": {
-    "x": 24,
-    "y": 136,
+    "x": 8,
+    "y": 120,
     "z": 6000,
-    "height": 64,
-    "width": 416,
+    "height": 80,
+    "width": 432,
     "tabOrder": 6000
   },
   "visual": {
@@ -19,7 +19,20 @@
               {
                 "textRuns": [
                   {
-                    "value": ""
+                    "value": "Panel principal de exportaciones de café",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Seleccione alguno de los países, tipo de café exportado o año para filtrar la información o haga click derecho en alguno de los países y seleccione drillthrough para obtener mayor información. ",
+                    "textStyle": {
+                      "color": "#cccccc"
+                    }
                   }
                 ]
               }

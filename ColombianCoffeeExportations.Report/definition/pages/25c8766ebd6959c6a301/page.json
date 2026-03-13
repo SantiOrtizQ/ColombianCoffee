@@ -95,5 +95,17 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "81753c78960d7650443a",
+      "target": "07755671e4aaa3d33c00",
+      "type": "DataFilter"
+    },
+    {
+      "source": "81753c78960d7650443a",
+      "target": "9da98bb8a57beba462bc",
+      "type": "DataFilter"
+    }
+  ]
 }

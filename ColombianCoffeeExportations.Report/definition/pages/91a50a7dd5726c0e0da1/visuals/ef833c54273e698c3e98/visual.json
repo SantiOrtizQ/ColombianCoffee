@@ -4,10 +4,10 @@
   "position": {
     "x": 8,
     "y": 208,
-    "z": 2001,
+    "z": 3000,
     "height": 272,
     "width": 640,
-    "tabOrder": 2001
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -73,22 +73,7 @@
     "objects": {
       "valueAxis": [
         {
-          "properties": {
-            "end": {
-              "expr": {
-                "Literal": {
-                  "Value": "7000000D"
-                }
-              }
-            },
-            "start": {
-              "expr": {
-                "Literal": {
-                  "Value": "2000000D"
-                }
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "labels": [

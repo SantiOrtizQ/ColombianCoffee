@@ -4,10 +4,10 @@
   "position": {
     "x": 784,
     "y": 232,
-    "z": 1003,
+    "z": 3000,
     "height": 232,
     "width": 488,
-    "tabOrder": 1003
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "lineClusteredColumnComboChart",
@@ -23,34 +23,16 @@
                       "Entity": "DimDate"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Date_id"
                 }
               },
-              "queryRef": "DimDate.Year",
-              "nativeQueryRef": "Year",
+              "queryRef": "DimDate.Date_id",
+              "nativeQueryRef": "Date_id",
               "active": true
             }
           ]
         },
         "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Porcentaje de Incremento Sacos Puertos"
-                }
-              },
-              "queryRef": "_Measures.Porcentaje de Incremento Sacos Puertos",
-              "nativeQueryRef": "Porcentaje de Incremento Sacos Puertos"
-            }
-          ]
-        },
-        "Y2": {
           "projections": [
             {
               "field": {
@@ -73,16 +55,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Measures"
+                    "Entity": "DimDate"
                   }
                 },
-                "Property": "Porcentaje de Incremento Sacos Puertos"
+                "Property": "Date_id"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
