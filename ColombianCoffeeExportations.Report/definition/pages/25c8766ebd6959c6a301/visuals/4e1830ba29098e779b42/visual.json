@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "4e1830ba29098e779b42",
   "position": {
-    "x": 24,
-    "y": 248,
+    "x": 8,
+    "y": 216,
     "z": 5000,
-    "height": 192,
-    "width": 224,
+    "height": 224,
+    "width": 240,
     "tabOrder": 5000
   },
   "visual": {
@@ -19,9 +19,44 @@
               {
                 "textRuns": [
                   {
+                    "value": "Panel de Puertos de Exportación",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "color": "#fcb714"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Se puede observar el mapa con las ubicaciones de los diferentes puertos de exportación de café."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
                     "value": ""
                   }
                 ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Haga click en alguno de los diferentes puntos para filtrar la información o haga click derecho y drillthrough para obtener información más detallada sobre el puerto."
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Haga click sobre alguno de los tipos de café para filtrar los datos a cada tipo de café."
+                  }
+                ],
+                "listType": "bullet"
               }
             ]
           }

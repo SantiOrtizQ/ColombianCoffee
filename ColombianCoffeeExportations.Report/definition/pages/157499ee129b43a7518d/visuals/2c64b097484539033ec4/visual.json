@@ -21,7 +21,8 @@
                   {
                     "value": "Panel principal de exportaciones de café",
                     "textStyle": {
-                      "fontWeight": "bold"
+                      "fontWeight": "bold",
+                      "color": "#fcb714"
                     }
                   }
                 ]

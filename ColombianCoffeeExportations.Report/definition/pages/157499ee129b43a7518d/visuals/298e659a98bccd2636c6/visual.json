@@ -3,7 +3,7 @@
   "name": "298e659a98bccd2636c6",
   "position": {
     "x": 448,
-    "y": 120.00000000000001,
+    "y": 120,
     "z": 0,
     "height": 80,
     "width": 336,
@@ -41,7 +41,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Between'"
                 }
               }
             }
@@ -50,7 +50,15 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
         }
       ],
       "header": [
@@ -60,6 +68,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Años'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -74,7 +89,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },

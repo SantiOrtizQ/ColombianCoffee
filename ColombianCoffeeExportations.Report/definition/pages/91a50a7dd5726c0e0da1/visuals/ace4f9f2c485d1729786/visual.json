@@ -21,7 +21,9 @@
                   {
                     "value": "Drillthrough Países",
                     "textStyle": {
-                      "fontWeight": "bold"
+                      "fontWeight": "bold",
+                      "fontSize": "11pt",
+                      "color": "#fcb714"
                     }
                   }
                 ]
@@ -29,9 +31,40 @@
               {
                 "textRuns": [
                   {
-                    "value": "En el "
+                    "value": "En este panel se puede notar información más específica para el pais seleccionado. "
                   }
                 ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "En la parte superior izquierda, una carta con valores importantes para el país."
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "En la zona media del panel, de izquierda a derecha, se tienen las gráficas de sacos exportados por año y por mes, respectivamente, en el rango específicado por el slicer de la parte superior derecha del panel."
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Finalmente, en la parte inferior a inferior derecha, se tiene el porcentaje de los sacos recibidos por el país en comparación con los sacos totales exportados, así como la matriz general de exportaciones con acceso a las fechas exactas de las exportaciones."
+                  }
+                ],
+                "listType": "bullet"
               }
             ]
           }

@@ -107,7 +107,7 @@ table _Measures
 	measure Ranking
 		lineageTag: 4695d025-c382-4676-b3c8-e6b72b42e7ee
 
-	measure 'Sacos Totales Sin Filtros' = CALCULATE([Sacos de 60 kg Recibidos], REMOVEFILTERS())
+	measure 'Sacos Totales Sin Filtros' = CALCULATE([Sacos de 60 kg Recibidos], REMOVEFILTERS(DimCountry))
 		formatString: 0
 		displayFolder: Dest
 		lineageTag: 6c9f9dea-58e9-4adb-a384-1acb02237d73

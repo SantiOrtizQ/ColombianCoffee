@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "a56f5d11000510089802",
+  "name": "7547c02357e561bb800d",
   "position": {
-    "x": 8,
-    "y": 8,
-    "z": 3000,
-    "height": 96,
-    "width": 856,
-    "tabOrder": 3000
+    "x": 416,
+    "y": 224,
+    "z": 7000,
+    "height": 488,
+    "width": 368,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,14 +19,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "Puertos de Exportación",
-                    "textStyle": {
-                      "fontFamily": "Cambria Math",
-                      "fontSize": "54pt"
-                    }
+                    "value": "INCORPORAR EL PRECIO PROMEDIO POR CARGA DE CAFÉ Y PODER REALIZAR EL FILTRADO CON EL SLICER QUE YA SE TIENE!!!!!!"
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }

@@ -3,10 +3,10 @@
   "name": "e5df8471730797288624",
   "position": {
     "x": 64,
-    "y": 0,
+    "y": 8,
     "z": 1000,
-    "height": 208,
-    "width": 752.00000000000011,
+    "height": 192,
+    "width": 808,
     "tabOrder": 0
   },
   "visual": {
@@ -15,25 +15,6 @@
       "queryState": {
         "Data": {
           "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "DimCountry"
-                        }
-                      },
-                      "Property": "Country"
-                    }
-                  },
-                  "Function": 3
-                }
-              },
-              "queryRef": "Min(DimCountry.Country)",
-              "nativeQueryRef": "First Country"
-            },
             {
               "field": {
                 "Measure": {
@@ -97,21 +78,16 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "DimCountry"
-                      }
-                    },
-                    "Property": "Country"
+                  "SourceRef": {
+                    "Entity": "_Measures"
                   }
                 },
-                "Function": 3
+                "Property": "Sacos de 60 kg Recibidos"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
@@ -119,20 +95,6 @@
     },
     "objects": {
       "label": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'País'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Min(DimCountry.Country)"
-          }
-        },
         {
           "properties": {
             "text": {
@@ -269,6 +231,63 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DimCountry"
+                        }
+                      },
+                      "Property": "Country"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "28D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
                 }
               }
             }

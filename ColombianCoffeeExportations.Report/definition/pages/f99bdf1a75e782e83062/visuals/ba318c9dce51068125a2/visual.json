@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "898b9cc0010e22ec87b5",
+  "name": "ba318c9dce51068125a2",
   "position": {
-    "x": 8,
-    "y": 112,
-    "z": 1000,
-    "height": 96,
-    "width": 240,
-    "tabOrder": 1000
+    "x": 872,
+    "y": 104,
+    "z": 5000,
+    "height": 112,
+    "width": 400,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "slicer",
@@ -47,17 +47,7 @@
             }
           }
         }
-      ],
-      "general": [
-        {
-          "properties": {}
-        }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Year",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }
