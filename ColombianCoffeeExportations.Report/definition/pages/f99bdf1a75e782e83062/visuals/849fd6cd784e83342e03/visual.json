@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ef833c54273e698c3e98",
+  "name": "849fd6cd784e83342e03",
   "position": {
-    "x": 8,
-    "y": 208,
-    "z": 3000,
-    "height": 272,
-    "width": 640,
-    "tabOrder": 3000
+    "x": 416,
+    "y": 224,
+    "z": 7001,
+    "height": 240.00000000000003,
+    "width": 392,
+    "tabOrder": 7001
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "areaChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimDate"
+                      "Entity": "PortsVolume"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Date_id"
                 }
               },
-              "queryRef": "DimDate.Year",
-              "nativeQueryRef": "Year",
+              "queryRef": "PortsVolume.Date_id",
+              "nativeQueryRef": "Date_id",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sacos de 60 kg Recibidos"
+                  "Property": "Valor Exportado (USD)"
                 }
               },
-              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
-              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+              "queryRef": "_Measures.Valor Exportado (USD)",
+              "nativeQueryRef": "Valor Exportado (USD)"
             }
           ]
         }
@@ -55,78 +55,26 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Measures"
+                    "Entity": "PortsVolume"
                   }
                 },
-                "Property": "Sacos de 60 kg Recibidos"
+                "Property": "Date_id"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "valueAxis": [
-        {
-          "properties": {}
-        }
-      ],
-      "labels": [
+      "lineStyles": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "enableDetailDataLabel": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "detailLabelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "end": {
-              "expr": {
-                "Literal": {
-                  "Value": "2025D"
-                }
-              }
-            },
-            "invertAxis": {
+            "showMarker": {
               "expr": {
                 "Literal": {
                   "Value": "false"
@@ -139,15 +87,42 @@
       "dataPoint": [
         {
           "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "66D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
             "fill": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0
+                      "ColorId": 5,
+                      "Percent": 0.2
                     }
                   }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Valor Exportado (USD)"
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Fecha'"
                 }
               }
             }
@@ -156,6 +131,19 @@
       ]
     },
     "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Valor Exportado'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "border": [
         {
           "properties": {
@@ -178,30 +166,10 @@
                 }
               }
             },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
                   "Value": "5D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Sacos Recibidos por Año'"
                 }
               }
             }

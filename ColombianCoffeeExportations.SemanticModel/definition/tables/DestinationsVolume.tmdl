@@ -49,6 +49,13 @@ table DestinationsVolume
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column 'Valor por Carga (USD)' = DIVIDE(DestinationsVolume[Valor (USD)], DestinationsVolume[Sacos (60 kg)])/60*125
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 55a0a128-c7ef-4790-b3e4-73a7d169076f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition DestinationsVolume = m
 		mode: import
 		source =

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ef833c54273e698c3e98",
+  "name": "f390e83745569296c0c6",
   "position": {
     "x": 8,
-    "y": 208,
-    "z": 3000,
-    "height": 272,
-    "width": 640,
-    "tabOrder": 3000
+    "y": 224,
+    "z": 6000,
+    "height": 240.00000000000003,
+    "width": 400,
+    "tabOrder": 6000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimDate"
+                      "Entity": "DimTypes"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Coffee Type"
                 }
               },
-              "queryRef": "DimDate.Year",
-              "nativeQueryRef": "Year",
+              "queryRef": "DimTypes.Coffee Type",
+              "nativeQueryRef": "Coffee Type",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sacos de 60 kg Recibidos"
+                  "Property": "Sacos de 60 kg Exportados"
                 }
               },
-              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
-              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+              "queryRef": "_Measures.Sacos de 60 kg Exportados",
+              "nativeQueryRef": "Sacos de 60 kg Exportados"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Sacos de 60 kg Recibidos"
+                "Property": "Sacos de 60 kg Exportados"
               }
             },
             "direction": "Descending"
@@ -71,11 +71,6 @@
       }
     },
     "objects": {
-      "valueAxis": [
-        {
-          "properties": {}
-        }
-      ],
       "labels": [
         {
           "properties": {
@@ -83,20 +78,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "enableDetailDataLabel": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "detailLabelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
                 }
               }
             }
@@ -116,26 +97,6 @@
           }
         }
       ],
-      "categoryAxis": [
-        {
-          "properties": {
-            "end": {
-              "expr": {
-                "Literal": {
-                  "Value": "2025D"
-                }
-              }
-            },
-            "invertAxis": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
       "dataPoint": [
         {
           "properties": {
@@ -148,6 +109,39 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sacos Exportados'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tipo de Café'"
                 }
               }
             }
@@ -178,17 +172,30 @@
                 }
               }
             },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
                   "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
                 }
               }
             }
@@ -201,7 +208,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Sacos Recibidos por Año'"
+                  "Value": "'Sacos Exportados por Tipo'"
                 }
               }
             }

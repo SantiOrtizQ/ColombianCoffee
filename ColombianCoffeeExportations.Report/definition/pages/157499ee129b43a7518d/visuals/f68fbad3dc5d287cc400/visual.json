@@ -92,7 +92,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Porcentaje de Exportaciones por País'"
+                  "Value": "'Exportaciones por País'"
                 }
               }
             }

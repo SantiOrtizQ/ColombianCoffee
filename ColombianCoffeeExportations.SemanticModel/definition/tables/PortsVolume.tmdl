@@ -49,6 +49,13 @@ table PortsVolume
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column 'Valor por Carga' = DIVIDE(PortsVolume[Valor provisional de la Exportación (USD) *], PortsVolume[Sacos de 60 Kg. Exportados])/60*125
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 8d73cc3e-c787-4bd0-afe9-0f967481f8c6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition PortsVolume = m
 		mode: import
 		source =

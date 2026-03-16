@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ef833c54273e698c3e98",
+  "name": "581a881a9eb0b1ec04c8",
   "position": {
-    "x": 8,
-    "y": 208,
-    "z": 3000,
-    "height": 272,
-    "width": 640,
-    "tabOrder": 3000
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 240,
+    "width": 320,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -23,11 +23,11 @@
                       "Entity": "DimDate"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Date_id"
                 }
               },
-              "queryRef": "DimDate.Year",
-              "nativeQueryRef": "Year",
+              "queryRef": "DimDate.Date_id",
+              "nativeQueryRef": "Date_id",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sacos de 60 kg Recibidos"
+                  "Property": "Promedio de Precio de Café por Carga"
                 }
               },
-              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
-              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+              "queryRef": "_Measures.Promedio de Precio de Café por Carga",
+              "nativeQueryRef": "Promedio de Precio de Café por Carga"
             }
           ]
         }
@@ -55,45 +55,40 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Measures"
+                    "Entity": "DimDate"
                   }
                 },
-                "Property": "Sacos de 60 kg Recibidos"
+                "Property": "Date_id"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "valueAxis": [
-        {
-          "properties": {}
-        }
-      ],
       "labels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
-            "enableDetailDataLabel": {
+            "labelOverflow": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
-            "detailLabelDisplayUnits": {
+            "labelDisplayUnits": {
               "expr": {
                 "Literal": {
                   "Value": "1D"
@@ -101,35 +96,28 @@
               }
             }
           }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
-          }
         }
       ],
       "categoryAxis": [
         {
           "properties": {
-            "end": {
+            "axisType": {
               "expr": {
                 "Literal": {
-                  "Value": "2025D"
+                  "Value": "'Scalar'"
                 }
               }
-            },
-            "invertAxis": {
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'Precio (USD)'"
                 }
               }
             }
@@ -144,7 +132,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 3,
+                      "ColorId": 9,
                       "Percent": 0
                     }
                   }
@@ -156,52 +144,18 @@
       ]
     },
     "visualContainerObjects": {
-      "border": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "5D"
-                }
-              }
-            }
-          }
-        }
-      ],
       "title": [
         {
           "properties": {
             "text": {
               "expr": {
-                "Literal": {
-                  "Value": "'Sacos Recibidos por Año'"
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Tooltip Precio Label"
                 }
               }
             }

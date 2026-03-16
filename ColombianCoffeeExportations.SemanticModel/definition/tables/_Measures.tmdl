@@ -84,7 +84,7 @@ table _Measures
 		displayFolder: Ports
 		lineageTag: b33af49c-cfb5-483b-a011-28fcbab837d5
 
-	measure 'Main Graph Title Exportadores' = "Exportaciones de Café en el Tiempo " & IF(MIN(DimDate[Year])=MAX(DimDate[Year]), SELECTEDVALUE(DimDate[Year]), MIN(DimDate[Year]) & " - " & MAX(DimDate[Year]))
+	measure 'Main Graph Title Exportadores' = "Exportaciones de Café (" & IF(MIN(DimDate[Year])=MAX(DimDate[Year]), SELECTEDVALUE(DimDate[Year]), MIN(DimDate[Year]) & " - " & MAX(DimDate[Year])) & ")"
 		displayFolder: Labels
 		lineageTag: b240772a-5b36-4c74-bf5d-de1c0d4fe802
 
@@ -103,9 +103,6 @@ table _Measures
 		lineageTag: 7c1dfef5-3827-46f6-9c8c-eadd99f7930b
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
-
-	measure Ranking
-		lineageTag: 4695d025-c382-4676-b3c8-e6b72b42e7ee
 
 	measure 'Sacos Totales Sin Filtros' = CALCULATE([Sacos de 60 kg Recibidos], REMOVEFILTERS(DimCountry))
 		formatString: 0
@@ -137,6 +134,14 @@ table _Measures
 	measure 'Sacos de 60 kg Exportados Sin Filtros' = CALCULATE([Sacos de 60 kg Exportados], REMOVEFILTERS())
 		formatString: 0
 		lineageTag: c52e8c6b-1038-4f65-9379-a70e66677ee8
+
+	measure 'Promedio de Precio de Café por Carga' = AVERAGE(PortsVolume[Valor por Carga])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 39f0c9af-4ed1-409f-b06b-96c9ecab4b63
+
+	measure 'Tooltip Precio Label' = "Precio Promedio por Carga (" & SELECTEDVALUE(DimTypes[Coffee Type]) & ")"
+		displayFolder: Labels
+		lineageTag: bc269fd5-b31a-4e8d-b78f-c472d96a10ba
 
 	column -
 		dataType: string

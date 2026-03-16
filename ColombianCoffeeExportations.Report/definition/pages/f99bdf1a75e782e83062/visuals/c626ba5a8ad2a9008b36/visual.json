@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "ef833c54273e698c3e98",
+  "name": "c626ba5a8ad2a9008b36",
   "position": {
     "x": 8,
-    "y": 208,
-    "z": 3000,
-    "height": 272,
-    "width": 640,
-    "tabOrder": 3000
+    "y": 472,
+    "z": 7000,
+    "height": 240.00000000000003,
+    "width": 360,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimDate"
+                      "Entity": "DimTypes"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Coffee Type"
                 }
               },
-              "queryRef": "DimDate.Year",
-              "nativeQueryRef": "Year",
+              "queryRef": "DimTypes.Coffee Type",
+              "nativeQueryRef": "Coffee Type",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sacos de 60 kg Recibidos"
+                  "Property": "Promedio de Precio de Café por Carga"
                 }
               },
-              "queryRef": "_Measures.Sacos de 60 kg Recibidos",
-              "nativeQueryRef": "Sacos de 60 kg Recibidos"
+              "queryRef": "_Measures.Promedio de Precio de Café por Carga",
+              "nativeQueryRef": "Promedio de Precio de Café por Carga"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Sacos de 60 kg Recibidos"
+                "Property": "Promedio de Precio de Café por Carga"
               }
             },
             "direction": "Descending"
@@ -71,11 +71,6 @@
       }
     },
     "objects": {
-      "valueAxis": [
-        {
-          "properties": {}
-        }
-      ],
       "labels": [
         {
           "properties": {
@@ -85,69 +80,30 @@
                   "Value": "true"
                 }
               }
-            },
-            "enableDetailDataLabel": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "detailLabelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
             }
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "highlightMatching": 1
           }
         }
       ],
       "categoryAxis": [
         {
           "properties": {
-            "end": {
+            "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "2025D"
-                }
-              }
-            },
-            "invertAxis": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Value": "'Tipo de Café'"
                 }
               }
             }
           }
         }
       ],
-      "dataPoint": [
+      "valueAxis": [
         {
           "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0
-                    }
-                  }
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Precio (USD)'"
                 }
               }
             }
@@ -156,6 +112,39 @@
       ]
     },
     "visualContainerObjects": {
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Promedio de Precio de Café por Tipo (Por Carga)'"
+                }
+              }
+            }
+          }
+        }
+      ],
       "border": [
         {
           "properties": {
@@ -178,30 +167,10 @@
                 }
               }
             },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
             "radius": {
               "expr": {
                 "Literal": {
                   "Value": "5D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Sacos Recibidos por Año'"
                 }
               }
             }
