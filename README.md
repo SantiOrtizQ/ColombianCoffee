@@ -1,66 +1,87 @@
-# ☕ Colombian Coffee Dashboard
+# ☕ Colombian Coffee Export Dashboard (Power BI)
 
-Interactive data dashboard that explores production, export trends, and regional patterns of Colombian coffee using modern data analysis and visualization tools.
+An end-to-end data analytics project that explores **Colombian coffee export dynamics** through an interactive Power BI dashboard built using the `.pbip` project structure for version control.
 
-This project demonstrates how raw datasets can be transformed into actionable insights through data cleaning, transformation, and dashboard design.
+This project showcases a complete workflow: from raw Excel data to a structured data model and a fully interactive report.
 
 ---
 
 ## 📊 Project Overview
 
-Colombia is one of the world's largest coffee producers and exporters. This dashboard analyzes key indicators of the Colombian coffee sector, including production volumes, regional distribution, and export behavior.
+Colombia is one of the world's leading coffee exporters. This project analyzes export data to uncover:
 
-The goal of this project is to demonstrate a complete **data analytics workflow**, from raw data to interactive visualization.
+* Export trends over time
+* Key destination markets
+* Port-level export distribution
+* Patterns in volume and logistics
 
-Key objectives:
-
-- Analyze historical trends in Colombian coffee production
-- Identify the departments with the highest production levels
-- Explore export behavior and potential patterns
-- Build an interactive dashboard for easy data exploration
+The main goal is to demonstrate how **raw operational data** can be transformed into **business insights** using Power BI. In addition, it is desired that you provide a report based on official information to assess the export capacity of Colombian coffee.
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Architecture & Workflow
 
-- **Python** – Data cleaning and preprocessing  
-- **Pandas** – Data transformation and analysis  
-- **Power BI / Tableau / Plotly / Dash** *(adjust depending on the tool you used)*  
-- **Jupyter Notebook** – Exploratory analysis  
-- **Git & GitHub** – Version control and project management  
+This project follows a modern analytics workflow:
+
+1. **Data Sources**
+
+   * Excel files containing export records
+   * Port location reference data
+
+2. **Data Transformation (Power Query)**
+
+   * Data cleaning and normalization
+   * Column standardization
+   * Handling missing values
+   * Merging datasets (exports + port locations)
+
+3. **Data Modeling**
+
+   * Relational model between exports and location data
+   * Optimized structure for analytics
+
+4. **Visualization Layer (Power BI Report)**
+
+   * Interactive dashboards
+   * Filters and slicers
+   * Aggregated KPIs
 
 ---
 
 ## 📂 Project Structure
 
+```
+ColombianCoffee-main/
 │
-├── data
-│ ├── raw_data
-│ └── processed_data
+├── ColombianCoffeeExportations.pbip   # Power BI project (Git-friendly)
 │
-├── notebooks
-│ └── data_exploration.ipynb
+├── ColombianCoffeeExportations.Report/
+│   ├── definition/                    # Report definition (JSON)
+│   ├── pages/                         # Dashboard pages
+│   └── StaticResources/               # Themes and assets
 │
-├── dashboard
-│ └── dashboard_file
+├── *.xlsx                             # Data sources
+│   ├── Exportaciones-2025-1.xlsx
+│   ├── ExportacionesSource.xlsx
+│   └── ports_location.xlsx
 │
-├── images
-│ └── dashboard_preview.png
+├── exportacionesPreview.png           # Dashboard preview
+├── Background.png / .pptx             # Visual assets
 │
 └── README.md
-
+```
 
 ---
 
 ## 📈 Dashboard Features
 
-The dashboard allows users to:
+The Power BI report enables:
 
-- Visualize coffee production by **department**
-- Explore **historical production trends**
-- Compare regional production levels
-- Analyze **export patterns**
-- Interactively filter the data
+* 📦 Analysis of **export volumes**
+* 🌎 Identification of **top export destinations**
+* 🚢 Insights by **port of departure**
+* 📅 Time-based trend analysis
+* 🎯 Interactive filtering by key dimensions
 
 ---
 
@@ -68,18 +89,74 @@ The dashboard allows users to:
 
 ![Dashboard Preview](exportacionesPreview.png)
 
-## 📊 Data Sources
+---
 
-The datasets used in this project come from publicly available data sources related to Colombian coffee production and exports, specifically from the exports dataset on:
+## 📚 Data Source
 
-- https://federaciondecafeteros.org/wp/estadisticas-cafeteras/
+The data used in this project comes from the official reports published by the
+**Federación Nacional de Cafeteros de Colombia**.
+
+* Source:
+  https://federaciondecafeteros.org/wp/estadisticas-cafeteras/
+
+These reports provide detailed statistics on coffee production, exports, and commercialization in Colombia.
+
+The datasets included in this repository are derived and adapted from these official sources for analytical and educational purposes.
+
+---
+
+## ⚙️ How to Use
+
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/SantiOrtizQ/ColombianCoffee.git
+   ```
+
+2. Open the `.pbip` file in **Power BI Desktop**
+
+3. If needed:
+
+   * Update file paths to local Excel sources
+   * Refresh the data model
+
+4. Explore the report interactively
+
+---
+
+## 🧠 Key Learnings & Skills Demonstrated
+
+* Power BI project structure using `.pbip` (version control friendly)
+* Data transformation with **Power Query (M)**
+* Data modeling and relationships
+* Dashboard design and storytelling
+* Working with real-world export datasets
+
+---
+
+## 🚀 Possible Improvements
+
+* Automate data ingestion (e.g., API or database connection)
+* Add advanced DAX measures (YoY growth, moving averages)
+* Improve geospatial visualizations
+* Deploy to Power BI Service
 
 ---
 
 ## 👤 Author
 
-Santiago Ortiz
-Engineering Physicist | Data & Analytics
+**Santiago Ortiz**
+Engineering Physicist | Data Analytics | Data Engineering
 
 GitHub:
 https://github.com/SantiOrtizQ
+
+---
+
+## 📌 Notes
+
+* This project uses local Excel files as data sources
+* No sensitive information is included
+* Designed for learning, portfolio, and demonstration purposes
+
+---
