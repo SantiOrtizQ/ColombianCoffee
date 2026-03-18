@@ -10,11 +10,11 @@ table DimCountry
 
 		annotation SummarizationSetBy = Automatic
 
-	column Country
+	column País
 		dataType: string
 		lineageTag: 1954cf5c-9983-469e-afb4-f6a63f52a3cc
 		summarizeBy: none
-		sourceColumn: Country
+		sourceColumn: País
 
 		annotation SummarizationSetBy = Automatic
 
@@ -36,9 +36,10 @@ table DimCountry
 				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates1",{{"Column1", Order.Ascending}}),
 				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 1, 1, Int64.Type),
 				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "Country_id"}, {"Column1", "Country"}}),
-				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Country_id", "Country"})
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Country_id", "Country"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Reordered Columns",{{"Country", "País"}})
 				in
-				    #"Reordered Columns"
+				    #"Renamed Columns1"
 
 	annotation PBI_NavigationStepName = Navigation
 

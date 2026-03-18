@@ -140,6 +140,19 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tipo de Café'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {

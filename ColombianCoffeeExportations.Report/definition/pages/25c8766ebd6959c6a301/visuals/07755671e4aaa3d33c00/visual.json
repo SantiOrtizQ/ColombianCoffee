@@ -83,6 +83,19 @@
             }
           }
         }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Puerto'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {

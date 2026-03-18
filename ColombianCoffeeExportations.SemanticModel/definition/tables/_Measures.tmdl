@@ -34,7 +34,7 @@ table _Measures
 		displayFolder: Dest
 		lineageTag: a2e34073-75da-44bd-a902-a150a54a5ec9
 
-	measure 'Tooltip Title' = "Sacos de 60 kg Recibidos - " & SELECTEDVALUE(DimCountry[Country])
+	measure 'Tooltip Title' = "Sacos de 60 kg Recibidos - " & SELECTEDVALUE(DimCountry[País])
 		displayFolder: Labels
 		lineageTag: 28086a4a-cf90-4402-92b8-af0fca72a5f1
 

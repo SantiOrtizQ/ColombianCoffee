@@ -23,11 +23,11 @@
                       "Entity": "DimCountry"
                     }
                   },
-                  "Property": "Country"
+                  "Property": "País"
                 }
               },
               "queryRef": "DimCountry.Country",
-              "nativeQueryRef": "Country",
+              "nativeQueryRef": "País",
               "active": true
             }
           ]

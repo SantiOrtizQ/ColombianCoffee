@@ -1197,7 +1197,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "DimCountry",
-			          "ConceptualProperty": "Country"
+			          "ConceptualProperty": "País"
 			        }
 			      },
 			      "State": "Generated",

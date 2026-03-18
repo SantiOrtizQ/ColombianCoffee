@@ -23,11 +23,11 @@
                       "Entity": "DimCountry"
                     }
                   },
-                  "Property": "Country"
+                  "Property": "País"
                 }
               },
               "queryRef": "DimCountry.Country",
-              "nativeQueryRef": "Country",
+              "nativeQueryRef": "País",
               "active": true
             },
             {
@@ -132,7 +132,7 @@
                       "Entity": "DimCountry"
                     }
                   },
-                  "Property": "Country"
+                  "Property": "País"
                 }
               }
             ],
@@ -255,6 +255,19 @@
               "expr": {
                 "Literal": {
                   "Value": "5D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "showVisualInformationButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
